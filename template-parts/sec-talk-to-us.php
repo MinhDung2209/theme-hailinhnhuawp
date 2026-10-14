@@ -36,7 +36,7 @@
                    if ($cf7_short_code) {
                        echo do_shortcode($cf7_short_code);
                    } else {
-                    echo '<div class="text-red text-center">' + pll_e('sec_talk_to_us_text_3') + '</div>';
+                    echo '<div class="text-red text-center">' . pll__('sec_talk_to_us_text_3') . '</div>';
                    }?>
                </div>
             </div>
