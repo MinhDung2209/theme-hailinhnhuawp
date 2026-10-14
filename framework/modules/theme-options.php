@@ -127,7 +127,7 @@ function custom_theme_options() {
                             <p>Author: Dũng Stradevn AI</p>
                             <p>Author URI: </p>
                             <p>Description: Hai Linh plastic theme wordpress</p>
-                            <p>Version: v1.3</p>', 'hongtq_dev' ),
+                            <p>Version: v1.4</p>', 'hongtq_dev' ),
         'type'        => 'textblock-titled',
         'section'     => 'general_settings',
         'operator'    => 'and'

@@ -24,6 +24,17 @@
         }
     });
 
+    // Menu tren may tinh: re chuot de xo menu con, bam muc cha (VD: Products) thi mo trang cua no
+    document.addEventListener('click', function (e) {
+        var toggle = e.target.closest('.navbar .dropdown-toggle');
+        if (!toggle || window.innerWidth < 992) return;
+        var href = toggle.getAttribute('href');
+        if (href && href.charAt(0) !== '#') {
+            e.stopPropagation();
+            window.location.href = href;
+        }
+    }, true);
+
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             var box = document.querySelector('.hl-lb');

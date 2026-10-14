@@ -50,7 +50,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(8, 12, 40, .88) 0%, rgba(8, 12, 40, .72) 55%, rgba(8, 12, 40, .5) 100%);
+    background: linear-gradient(90deg, rgba(8, 12, 40, .66) 0%, rgba(8, 12, 40, .42) 50%, rgba(8, 12, 40, .12) 100%);
 }
 .hl-hero > .container { position: relative; z-index: 1; }
 .hl-hero-content { max-width: 760px; }
@@ -97,7 +97,7 @@
     color: #fff;
     text-align: center;
 }
-.hl-page-hero::before { content: ""; position: absolute; inset: 0; background: rgba(8, 12, 40, .78); }
+.hl-page-hero::before { content: ""; position: absolute; inset: 0; background: rgba(8, 12, 40, .55); }
 .hl-page-hero > .container { position: relative; z-index: 1; }
 .hl-page-title { font-size: 44px; font-weight: 700; color: #fff; margin: 0; }
 .hl-page-sub { font-size: 18px; color: #dfe6f5; margin: 12px auto 0; max-width: 720px; }
@@ -458,3 +458,10 @@ footer .hl-social { justify-content: flex-end; margin: 0 0 16px; }
 
 /* Trang Products nen toi: tieu de Other products mau sang */
 .hl-lines .hl-other-title { color: #fff; }
+
+/* Menu may tinh: re chuot xo menu con */
+@media screen and (min-width: 992px) {
+    .navbar .dropdown:hover > .dropdown-menu { display: block; margin-top: 0; }
+}
+/* Hero sang hon: chu doc ro nho bong chu */
+.hl-hero-company, .hl-hero-title, .hl-hero-desc, .hl-stat { text-shadow: 0 2px 10px rgba(0, 0, 0, .45); }

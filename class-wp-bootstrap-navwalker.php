@@ -212,7 +212,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 
 			// If the item has_children add atts to <a>.
 			if ( $this->has_children && 0 === $depth ) {
-				$atts['href']          = '#';
+				$atts['href']          = ! empty( $item->url ) ? $item->url : '#'; // Hai Linh v2: giu link that (VD: /products/) de bam vao duoc
 				$atts['data-toggle']   = 'dropdown';
 				$atts['aria-expanded'] = 'false';
 				$atts['class']         = 'dropdown-toggle nav-link';
