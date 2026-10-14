@@ -15,7 +15,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('HL_V2_VERSION', '2.1.0');
+define('HL_V2_VERSION', '2.1.1');
 
 /*-----------------------------------------------------------------------------------*/
 /*  Chu tren giao dien (dich qua Polylang > Translations, nhom "Hai Linh v2")

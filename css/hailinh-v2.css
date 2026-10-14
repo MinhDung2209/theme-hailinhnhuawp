@@ -396,7 +396,7 @@ footer .hl-social { justify-content: flex-end; margin: 0 0 16px; }
 .hl-head-left .hl-section-desc { margin-left: 0; }
 .hl-products-home .hl-lines { margin-bottom: 8px; }
 .hl-products-home .hl-sub-title { margin-top: 40px; }
-.hl-other-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+.hl-other-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 220px)); gap: 16px; }
 .hl-other { display: block; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 6px 20px rgba(14, 13, 53, .08); color: var(--hl-navy) !important; text-decoration: none !important; }
 .hl-other img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; transition: transform .3s; }
 .hl-other:hover img { transform: scale(1.04); }
@@ -433,3 +433,6 @@ footer .hl-social { justify-content: flex-end; margin: 0 0 16px; }
     .hl-factory-grid { gap: 10px; }
     .hl-other-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 }
+
+.hl-products-more { text-align: center; margin-top: 32px; }
+.hl-other-title { margin-top: 48px; }
