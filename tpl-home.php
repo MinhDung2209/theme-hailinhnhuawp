@@ -8,11 +8,13 @@
    <?php
       get_template_part('template-parts/hl-products-home');
       // get_template_part('template-parts/sec-animation-home-page'); // Hai Linh v2: tat (dong SP cu Filler/Color), thay bang hl-products-home
+      get_template_part('template-parts/hl-factory');
+      get_template_part('template-parts/hl-certificates');
+      get_template_part('template-parts/hl-export');
       get_template_part('template-parts/sec-what-we-do');
       get_template_part('template-parts/sec-application');
       get_template_part('template-parts/sec-bk-services');
       get_template_part('template-parts/sec-why-choose-us');
-      get_template_part('template-parts/hl-certificates');
       get_template_part('template-parts/sec-out-partner');
       get_template_part('template-parts/hl-library');
       get_template_part('template-parts/hl-contact-map');

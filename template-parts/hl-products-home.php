@@ -1,33 +1,31 @@
 <?php
-/* 5 DONG SAN PHAM - TRANG CHU (Hai Linh v2) */
+/* 5 DONG SAN PHAM - TRANG CHU (Hai Linh v2): hien day du anh + ma hang + thanh ty le nhu ban demo */
 $lines = hl_get_product_lines();
 if (!$lines) return;
+$others = hl_get_other_lines();
 ?>
 <section class="hl-section hl-products-home" id="hl-products">
     <div class="container">
-        <div class="hl-section-head">
+        <div class="hl-section-head hl-head-left">
             <h2 class="hl-section-title"><?php hl_e('products_title'); ?></h2>
-            <p class="hl-section-desc"><?php hl_e('products_desc'); ?></p>
+            <p class="hl-section-desc"><?php hl_e('products_note'); ?></p>
         </div>
-        <div class="hl-cards">
+        <div class="hl-lines">
             <?php foreach ($lines as $i => $term) {
-                $images   = hl_line_images($term);
-                $subtitle = get_term_meta($term->term_id, 'hl_line_subtitle', true);
-                $number   = (int) get_term_meta($term->term_id, 'hl_line_order', true); ?>
-                <a class="hl-card" href="<?php echo esc_url(get_term_link($term)); ?>">
-                    <span class="hl-card-img">
-                        <?php if ($images['main']) { ?>
-                            <img src="<?php echo esc_url($images['main']); ?>" alt="<?php echo esc_attr($term->name); ?>" loading="lazy">
-                        <?php } ?>
-                    </span>
-                    <span class="hl-card-body">
-                        <span class="hl-line-num"><?php echo esc_html($number ? $number : $i + 1); ?></span>
-                        <strong><?php echo esc_html($term->name); ?></strong>
-                        <?php if ($subtitle) { ?><small><?php echo esc_html($subtitle); ?></small><?php } ?>
-                        <em><?php hl_e('btn_view_grades'); ?> <i class="fa-solid fa-arrow-right"></i></em>
-                    </span>
-                </a>
-            <?php } ?>
+                hl_render_product_line($term, $i, 'h3');
+            } ?>
         </div>
+
+        <?php if ($others) { ?>
+            <h3 class="hl-sub-title"><?php hl_e('other_products'); ?></h3>
+            <div class="hl-other-grid">
+                <?php foreach ($others as $term) { ?>
+                    <a class="hl-other" href="<?php echo esc_url(get_term_link($term)); ?>">
+                        <img src="<?php echo esc_url(get_term_meta($term->term_id, 'term_image', true)); ?>" alt="<?php echo esc_attr($term->name); ?>" loading="lazy">
+                        <span><?php echo esc_html($term->name); ?></span>
+                    </a>
+                <?php } ?>
+            </div>
+        <?php } ?>
     </div>
 </section>

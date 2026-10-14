@@ -15,7 +15,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('HL_V2_VERSION', '2.0.0');
+define('HL_V2_VERSION', '2.1.0');
 
 /*-----------------------------------------------------------------------------------*/
 /*  Chu tren giao dien (dich qua Polylang > Translations, nhom "Hai Linh v2")
@@ -41,8 +41,17 @@ function hl_strings() {
         'grade_resin'       => 'Base resin',
         'grade_filler'      => 'Filler loading',
         'other_grades'      => 'Other grades in this line',
-        'cert_title'        => 'Quality & Certificates',
-        'cert_desc'         => 'Certificates and test reports of our products. Click to enlarge.',
+        'products_note'     => 'Listed in priority order 1-5. Filler ratio = % filler by weight in the masterbatch.',
+        'other_products'    => 'Other products',
+        'factory_title'     => 'Our factory',
+        'factory_desc'      => 'Compounding lines, raw-material storage and packing under one roof in Mai Village, Dan Chu Commune, Phu Tho Province.',
+        'cert_title'        => 'Quality you can verify',
+        'cert_desc'         => 'Our quality management system is certified to ISO 9001:2015 for the production of plastic additives. Check the certificate online with the retrieval code on the document.',
+        'cert_more'         => 'Certificates & test reports',
+        'btn_verify_cert'   => 'Verify certificate',
+        'click_to_enlarge'  => 'Click to enlarge',
+        'export_title'      => 'Packed for export',
+        'export_desc'       => "25 kg bags on wooden pallets, stretch-wrapped, loaded into 20' and 40' containers at our factory. We send loading photos before the container leaves.",
         'library_title'     => 'Library',
         'library_videos'    => 'Videos',
         'library_photos'    => 'Photos: Factory - Products - Team',
@@ -139,13 +148,51 @@ function hl_theme_options($settings) {
             'type'  => 'upload',
         ),
         array(
+            'id'    => 'hl_factory_photos',
+            'label' => 'Our factory - Ảnh nhà máy (6 ảnh)',
+            'desc'  => 'Chọn ảnh theo thứ tự muốn hiện. Chú thích dưới ảnh = ô "Caption" (Chú thích) của ảnh trong Media. Không có ảnh = ẩn mục này.',
+            'type'  => 'gallery',
+        ),
+        array(
+            'id'    => 'hl_cert_image',
+            'label' => 'Quality - Ảnh chứng chỉ chính (ISO)',
+            'desc'  => 'Ảnh scan/chụp chứng chỉ. Bấm vào ảnh trên web sẽ phóng to. Không có ảnh và không có chứng chỉ phụ = ẩn mục Quality.',
+            'type'  => 'upload',
+        ),
+        array(
+            'id'    => 'hl_cert_points',
+            'label' => 'Quality - Các dòng có dấu tích',
+            'desc'  => 'Mỗi dòng 1 ý. VD: Certificate No. ..., Valid until ...',
+            'type'  => 'textarea-simple',
+            'rows'  => 4,
+        ),
+        array(
+            'id'    => 'hl_cert_verify_url',
+            'label' => 'Quality - Link nút "Verify certificate"',
+            'desc'  => 'Trang tra cứu chứng chỉ của đơn vị cấp. Bỏ trống = ẩn nút.',
+            'type'  => 'text',
+        ),
+        array(
             'id'       => 'hl_certificates',
-            'label'    => 'Quality & Certificates',
-            'desc'     => 'Mỗi dòng 1 chứng chỉ: Tiêu đề + ảnh. Không có dòng nào = ẩn mục này.',
+            'label'    => 'Quality - Chứng chỉ / test report khác',
+            'desc'     => 'Mỗi dòng 1 chứng chỉ: Tiêu đề + ảnh. Hiện thành lưới dưới chứng chỉ chính.',
             'type'     => 'list-item',
             'settings' => array(
                 array('id' => 'image', 'label' => 'Ảnh chứng chỉ', 'type' => 'upload'),
             ),
+        ),
+        array(
+            'id'    => 'hl_export_photos',
+            'label' => 'Packed for export - Ảnh đóng hàng (2 ảnh)',
+            'desc'  => 'Không có ảnh = ẩn mục này.',
+            'type'  => 'gallery',
+        ),
+        array(
+            'id'    => 'hl_export_points',
+            'label' => 'Packed for export - Các dòng có dấu tích',
+            'desc'  => 'Mỗi dòng 1 ý.',
+            'type'  => 'textarea-simple',
+            'rows'  => 3,
         ),
         array(
             'id'       => 'hl_library_videos',
@@ -233,7 +280,33 @@ function hl_stats() {
         array('title' => '5',      'label' => 'Product lines'),
         array('title' => '20+',    'label' => 'Grade codes'),
         array('title' => '40-85%', 'label' => 'Filler loading'),
+        array('title' => 'ISO 9001:2015', 'label' => 'Certified by ISOCERT'),
     );
+}
+
+/** Danh sach id anh tu o "gallery" cua OptionTree */
+function hl_gallery_ids($option) {
+    return array_values(array_filter(array_map('absint', explode(',', (string) hl_option($option)))));
+}
+
+/** O nhieu dong -> mang, bo dong trong */
+function hl_text_lines($option) {
+    return array_values(array_filter(array_map('trim', preg_split('/
+||
+/', (string) hl_option($option)))));
+}
+
+/** Cac danh muc cu (khong thuoc 5 dong moi, khong phai danh muc con) co anh -> muc "Other products" */
+function hl_get_other_lines() {
+    $args = array('taxonomy' => 'product-cat', 'hide_empty' => false, 'parent' => 0);
+    if (function_exists('pll_current_language')) {
+        $args['lang'] = pll_current_language();
+    }
+    $terms = get_terms($args);
+    if (is_wp_error($terms)) return array();
+    return array_values(array_filter($terms, function ($term) {
+        return !hl_is_product_line($term) && get_term_meta($term->term_id, 'term_image', true) && get_term_children($term->term_id, 'product-cat') === array();
+    }));
 }
 
 function hl_youtube_id($url) {
