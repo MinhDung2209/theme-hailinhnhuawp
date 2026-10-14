@@ -15,7 +15,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('HL_V2_VERSION', '2.1.1');
+define('HL_V2_VERSION', '2.1.2');
 
 /*-----------------------------------------------------------------------------------*/
 /*  Chu tren giao dien (dich qua Polylang > Translations, nhom "Hai Linh v2")
@@ -292,17 +292,14 @@ function hl_gallery_ids($option) {
 /** O nhieu dong -> mang, bo dong trong */
 function hl_text_lines($option) {
     return array_values(array_filter(array_map('trim', preg_split('/
-||
+|
+|
 /', (string) hl_option($option)))));
 }
 
 /** Cac danh muc cu (khong thuoc 5 dong moi, khong phai danh muc con) co anh -> muc "Other products" */
 function hl_get_other_lines() {
-    $args = array('taxonomy' => 'product-cat', 'hide_empty' => false, 'parent' => 0);
-    if (function_exists('pll_current_language')) {
-        $args['lang'] = pll_current_language();
-    }
-    $terms = get_terms($args);
+    $terms = get_terms(hl_lang_args(array('taxonomy' => 'product-cat', 'hide_empty' => false, 'parent' => 0)));
     if (is_wp_error($terms)) return array();
     return array_values(array_filter($terms, function ($term) {
         return !hl_is_product_line($term) && get_term_meta($term->term_id, 'term_image', true) && get_term_children($term->term_id, 'product-cat') === array();
@@ -453,8 +450,16 @@ add_action('admin_footer', function () {
 /*-----------------------------------------------------------------------------------*/
 
 /** 5 dong san pham moi, theo so thu tu */
+/** Chi lay danh muc cua ngon ngu dang xem (Polylang) */
+function hl_lang_args($args) {
+    if (function_exists('pll_current_language') && pll_current_language()) {
+        $args['lang'] = pll_current_language();
+    }
+    return $args;
+}
+
 function hl_get_product_lines() {
-    $terms = get_terms(array(
+    $terms = get_terms(hl_lang_args(array(
         'taxonomy'   => 'product-cat',
         'hide_empty' => false,
         'meta_query' => array(array(
@@ -463,7 +468,7 @@ function hl_get_product_lines() {
             'compare' => '>',
             'type'    => 'NUMERIC',
         )),
-    ));
+    )));
     if (is_wp_error($terms) || empty($terms)) return array();
 
     usort($terms, function ($a, $b) {

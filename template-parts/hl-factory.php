@@ -5,7 +5,7 @@ if (!$ids) return;
 ?>
 <section class="hl-section hl-factory" id="factory">
     <div class="container">
-        <div class="hl-section-head hl-head-left">
+        <div class="hl-section-head">
             <h2 class="hl-section-title"><?php hl_e('factory_title'); ?></h2>
             <p class="hl-section-desc"><?php hl_e('factory_desc'); ?></p>
         </div>

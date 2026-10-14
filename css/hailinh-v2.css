@@ -436,3 +436,25 @@ footer .hl-social { justify-content: flex-end; margin: 0 0 16px; }
 
 .hl-products-more { text-align: center; margin-top: 32px; }
 .hl-other-title { margin-top: 48px; }
+
+/* ---------- v2.1.2: chinh sau khi xem tren web that ---------- */
+/* Chung chi: vua man hinh 100% */
+.hl-cert-main { max-width: 340px; }
+.hl-cert-main img { max-height: 68vh; width: auto; max-width: 100%; margin: 0 auto; }
+.hl-certificates .hl-cert-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 200px)); }
+.hl-certificates .hl-cert img { aspect-ratio: 3 / 4; }
+
+/* Our factory: chu thich nam tren anh */
+.hl-factory { background: #f4f7fc; }
+.hl-factory-item { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(14, 13, 53, .10); }
+.hl-factory-item a { border-radius: 0; }
+.hl-factory-item figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; margin: 0;
+    padding: 28px 16px 12px;
+    background: linear-gradient(180deg, rgba(8, 12, 40, 0) 0%, rgba(8, 12, 40, .82) 100%);
+    color: #fff; font-weight: 600; font-size: 15px; pointer-events: none;
+}
+.hl-export { background: #fff; }
+
+/* Trang Products nen toi: tieu de Other products mau sang */
+.hl-lines .hl-other-title { color: #fff; }

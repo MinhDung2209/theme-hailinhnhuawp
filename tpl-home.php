@@ -11,7 +11,7 @@
       get_template_part('template-parts/hl-factory');
       get_template_part('template-parts/hl-certificates');
       get_template_part('template-parts/hl-export');
-      get_template_part('template-parts/sec-what-we-do');
+      // get_template_part('template-parts/sec-what-we-do'); // chuyen sang trang Service (tpl-service.php)
       get_template_part('template-parts/sec-application');
       get_template_part('template-parts/sec-bk-services');
       get_template_part('template-parts/sec-why-choose-us');
