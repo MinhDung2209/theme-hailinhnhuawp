@@ -64,6 +64,11 @@
     require get_template_directory() . '/function-polylang.php';
 
 /* ----------------------------------------------------------------------------------- */
+/*  Hai Linh v2: 5 dong san pham moi, hero, chung chi, library, map (10/2026)
+/*----------------------------------------------------------------------------------- */
+    require get_template_directory() . '/inc/hailinh-v2.php';
+
+/* ----------------------------------------------------------------------------------- */
 /*  Create metadata
 /*----------------------------------------------------------------------------------- */
     include get_template_directory() . '/framework/custom_field/metadata.php';

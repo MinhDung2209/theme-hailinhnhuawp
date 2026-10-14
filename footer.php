@@ -59,14 +59,7 @@
                             <div class="mb-3">
                                 <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fnhuahailinh&tabs=timeline&width=340&height=72px&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=false&appId=744716923110543" width="340" height="72px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                             </div>
-                            <div class="d-flex mb-3 justify-content-end">
-                                <a href="https://www.facebook.com/nhuahailinh" target="_blank" title="Facebook" class="mr-3">
-                                    <img src="<?php echo THEME_URL; ?>/img/icon-fb.png" title="Facebook">
-                                </a>
-                                <a href="#" title="linkedin" target="_blank">
-                                    <img src="<?php echo THEME_URL; ?>/img/icon-linkedin.png" title="linkedin">
-                                </a>
-                            </div>
+                            <?php hl_social_links(); /* Hai Linh v2: Zalo / WhatsApp / Facebook / LinkedIn / YouTube - sua trong Theme Options */ ?>
                         </div>
                     </div>
                 </div>

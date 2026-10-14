@@ -1,0 +1,392 @@
+/* =====================================================================
+   Hai Linh v2 (10/2026): hero, 5 dong san pham, chung chi, library, map
+   Mau theo theme goc: #005EE8 (xanh), #15B3C7 (cyan), #0E0D35 (navy)
+   ===================================================================== */
+:root {
+    --hl-blue: #005EE8;
+    --hl-cyan: #15B3C7;
+    --hl-navy: #0E0D35;
+    --hl-panel: #12163f;
+    --hl-panel-line: rgba(255, 255, 255, .12);
+    --hl-text-soft: #b9c3dc;
+    --hl-red: #e31e2d;
+    --hl-radius: 12px;
+}
+
+/* ---------- Nut chung ---------- */
+.hl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.2;
+    border: 2px solid transparent;
+    transition: background .2s, color .2s, border-color .2s, transform .2s;
+    text-decoration: none !important;
+}
+.hl-btn:hover { transform: translateY(-1px); }
+.hl-btn-primary { background: linear-gradient(90deg, var(--hl-cyan) 0%, var(--hl-blue) 100%); color: #fff !important; }
+.hl-btn-primary:hover { background: var(--hl-blue); }
+.hl-btn-outline { border-color: #fff; color: #fff !important; background: transparent; }
+.hl-btn-outline:hover { background: #fff; color: var(--hl-navy) !important; }
+.hl-btn-light { background: #e8f1ff; color: var(--hl-blue) !important; }
+.hl-btn-light:hover { background: #d3e4ff; }
+
+/* ---------- Hero trang chu ---------- */
+.hl-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 170px 0 56px;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+.hl-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(8, 12, 40, .88) 0%, rgba(8, 12, 40, .72) 55%, rgba(8, 12, 40, .5) 100%);
+}
+.hl-hero > .container { position: relative; z-index: 1; }
+.hl-hero-content { max-width: 760px; }
+.hl-hero-company {
+    font-size: 54px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: .5px;
+    color: #fff;
+    margin: 0 0 14px;
+}
+.hl-hero-title {
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 14px;
+}
+.hl-hero-desc {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #dfe6f5;
+    margin: 0 0 28px;
+    max-width: 640px;
+}
+.hl-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hl-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, .2);
+}
+.hl-stat strong { display: block; font-size: 34px; line-height: 1.1; font-weight: 700; color: #7fdcf0; }
+.hl-stat span { display: block; margin-top: 6px; font-size: 15px; color: #dfe6f5; }
+
+/* ---------- Banner trang con ---------- */
+.hl-page-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 160px 0 64px;
+    color: #fff;
+    text-align: center;
+}
+.hl-page-hero::before { content: ""; position: absolute; inset: 0; background: rgba(8, 12, 40, .78); }
+.hl-page-hero > .container { position: relative; z-index: 1; }
+.hl-page-title { font-size: 44px; font-weight: 700; color: #fff; margin: 0; }
+.hl-page-sub { font-size: 18px; color: #dfe6f5; margin: 12px auto 0; max-width: 720px; }
+
+/* ---------- Section chung ---------- */
+.hl-section { padding: 72px 0; }
+.hl-section-head { text-align: center; margin-bottom: 40px; }
+.hl-section-title { font-size: 36px; font-weight: 700; color: var(--hl-navy); margin: 0; }
+.hl-section-desc { font-size: 17px; color: #565672; margin: 10px auto 0; max-width: 720px; }
+.hl-sub-title { font-size: 20px; font-weight: 600; color: var(--hl-navy); margin: 0 0 16px; }
+
+/* ---------- 5 dong san pham: the tren trang chu ---------- */
+.hl-products-home { background: #f4f7fc; }
+.hl-cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.hl-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: var(--hl-radius);
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(14, 13, 53, .08);
+    color: var(--hl-navy) !important;
+    text-decoration: none !important;
+    transition: transform .2s, box-shadow .2s;
+}
+.hl-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(14, 13, 53, .16); }
+.hl-card-img { display: block; aspect-ratio: 4 / 3; background: #e6ebf5; overflow: hidden; }
+.hl-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hl-card-body { display: flex; flex-direction: column; gap: 6px; padding: 16px; flex: 1; }
+.hl-card-body strong { font-size: 17px; line-height: 1.3; }
+.hl-card-body small { font-size: 14px; color: #565672; line-height: 1.45; }
+.hl-card-body em { margin-top: auto; padding-top: 8px; font-style: normal; font-weight: 600; font-size: 14px; color: var(--hl-blue); }
+
+/* ---------- Dong san pham: khung toi (trang Products / trang dong SP) ---------- */
+.hl-lines { background: var(--hl-navy); }
+.hl-lines .hl-section-title { color: #fff; }
+.hl-line {
+    background: var(--hl-panel);
+    border: 1px solid var(--hl-panel-line);
+    border-radius: 16px;
+    padding: 24px;
+    color: #fff;
+    scroll-margin-top: 110px;
+}
+.hl-line + .hl-line { margin-top: 28px; }
+.hl-line-media { display: flex; flex-direction: column; gap: 10px; }
+.hl-line-main { display: block; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; background: #1d2250; }
+.hl-line-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hl-line-noimg { display: flex; align-items: center; justify-content: center; color: #4b5389; font-size: 48px; }
+.hl-line-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.hl-line-gallery a { display: block; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 10; background: #1d2250; }
+.hl-line-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+.hl-line-gallery a:hover img { transform: scale(1.04); }
+
+.hl-line-title { display: flex; align-items: center; gap: 12px; font-size: 26px; font-weight: 700; margin: 0 0 6px; }
+.hl-line-title a { color: #fff !important; }
+.hl-line-title a:hover { color: #7fdcf0 !important; }
+.hl-line-num {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--hl-cyan);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+.hl-card .hl-line-num { width: 28px; height: 28px; font-size: 15px; }
+.hl-line-sub { color: var(--hl-text-soft); margin: 0 0 18px; font-size: 16px; }
+.hl-line-desc { color: #dfe6f5; margin-top: 18px; font-size: 15px; line-height: 1.6; }
+.hl-line-desc p:last-child { margin-bottom: 0; }
+
+.hl-grades { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hl-panel-line); }
+.hl-grade { padding: 12px 0; border-bottom: 1px solid var(--hl-panel-line); }
+.hl-grade-head {
+    display: grid;
+    grid-template-columns: minmax(90px, auto) 1fr auto;
+    grid-template-areas: "code resin value" "bar bar bar";
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 8px;
+}
+.hl-grade-code { grid-area: code; font-family: Consolas, Menlo, monospace; font-weight: 700; color: #7fdcf0 !important; font-size: 15px; }
+.hl-grade-code:hover { text-decoration: underline !important; }
+.hl-grade-resin { grid-area: resin; text-align: center; color: #fff; font-size: 15px; }
+.hl-ratio-value { grid-area: value; font-weight: 700; color: #fff; font-size: 15px; }
+.hl-ratio-bar { grid-area: bar; position: relative; display: block; height: 8px; border-radius: 8px; background: #2a3166; }
+.hl-ratio-bar span { position: absolute; top: 0; bottom: 0; border-radius: 8px; background: linear-gradient(90deg, var(--hl-cyan), #2fa8ff); }
+.hl-grade-note { display: block; margin-top: 6px; color: #8d97b8; font-size: 12px; }
+.hl-line-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+
+.hl-other-lines { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 32px; }
+.hl-other-lines a {
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: 1px solid var(--hl-panel-line);
+    color: #dfe6f5 !important;
+    font-size: 14px;
+}
+.hl-other-lines a:hover { border-color: var(--hl-cyan); color: #fff !important; }
+.hl-page-content { margin-top: 40px; color: #dfe6f5; }
+
+/* ---------- Chi tiet ma hang ---------- */
+.hl-grade-detail { background: #fff; }
+.hl-grade-img { display: block; border-radius: var(--hl-radius); overflow: hidden; }
+.hl-grade-img img { width: 100%; height: auto; display: block; }
+.hl-spec { width: 100%; margin-bottom: 24px; border-collapse: collapse; }
+.hl-spec th, .hl-spec td { padding: 12px 14px; border-bottom: 1px solid #e7e7eb; vertical-align: middle; }
+.hl-spec th { width: 38%; color: #565672; font-weight: 500; background: #f6f8fc; }
+.hl-grade-head-single { grid-template-columns: auto; grid-template-areas: "value" "bar"; }
+.hl-grade-head-single .hl-ratio-value { color: var(--hl-navy); }
+.hl-grade-head-single .hl-ratio-bar { background: #e3e8f3; }
+.hl-grade-detail .hl-other-grades { margin-top: 48px; text-align: center; }
+.hl-grade-detail .hl-other-lines a { border-color: #d6dcea; color: var(--hl-navy) !important; }
+.hl-grade-detail .hl-other-lines a:hover { border-color: var(--hl-blue); color: var(--hl-blue) !important; }
+
+/* ---------- Chung chi ---------- */
+.hl-certificates { background: #f4f7fc; }
+.hl-cert-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.hl-cert {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: var(--hl-radius);
+    padding: 12px;
+    box-shadow: 0 6px 20px rgba(14, 13, 53, .08);
+    color: var(--hl-navy) !important;
+    text-align: center;
+}
+.hl-cert img { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: #fafbfe; border-radius: 8px; }
+.hl-cert span { margin-top: 10px; font-weight: 600; font-size: 15px; }
+
+/* ---------- Library ---------- */
+.hl-video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 40px; }
+.hl-video-thumb, .hl-video iframe {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    padding: 0;
+    border-radius: var(--hl-radius);
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+}
+.hl-video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hl-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--hl-red);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+.hl-video-title { display: inline-block; margin-top: 8px; color: var(--hl-navy) !important; font-weight: 500; }
+.hl-photo-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.hl-photo { display: block; border-radius: 10px; overflow: hidden; aspect-ratio: 4 / 3; background: #e6ebf5; }
+.hl-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+.hl-photo:hover img { transform: scale(1.05); }
+
+/* ---------- Contact & Map ---------- */
+.hl-contact-map { background: #f4f7fc; }
+.hl-map { border-radius: var(--hl-radius); overflow: hidden; background: #dde5f2; aspect-ratio: 16 / 9; }
+.hl-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+.hl-contact-list { list-style: none; padding: 0; margin: 0 0 22px; }
+.hl-contact-list li { display: flex; gap: 14px; margin-bottom: 16px; color: var(--hl-navy); font-size: 16px; }
+.hl-contact-list i { flex: 0 0 22px; margin-top: 4px; color: var(--hl-blue); }
+.hl-contact-list b { display: block; font-weight: 600; }
+.hl-contact-list a { color: var(--hl-navy) !important; word-break: break-word; }
+.hl-contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ---------- Mang xa hoi ---------- */
+.hl-social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+footer .hl-social { justify-content: flex-end; margin: 0 0 16px; }
+.hl-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--hl-navy);
+    color: #fff !important;
+    font-size: 16px;
+    transition: background .2s;
+}
+.hl-social-btn:hover { background: var(--hl-blue); }
+.hl-social-whatsapp:hover { background: #25d366; }
+.hl-social-youtube:hover { background: #ff0000; }
+.hl-zalo { font-size: 11px; font-weight: 700; }
+
+/* ---------- Nut noi Profile / Contact ---------- */
+.hl-float-actions {
+    position: fixed;
+    right: 16px;
+    bottom: 20px;
+    z-index: 998;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.hl-float-btn {
+    min-width: 96px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: var(--hl-red);
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0 6px 16px rgba(227, 30, 45, .35);
+    transition: transform .2s, background .2s;
+}
+.hl-float-btn:hover { background: #c4111f; transform: translateY(-2px); }
+/* Day nut "len dau trang" cua theme goc len tren nut noi */
+.btn-scroll-to-top { bottom: 130px !important; right: 30px !important; }
+
+/* ---------- Lightbox ---------- */
+.hl-lb {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: rgba(5, 8, 25, .92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    cursor: zoom-out;
+}
+.hl-lb img { max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 10px 40px rgba(0, 0, 0, .5); }
+.hl-lb-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 36px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 1199px) {
+    .hl-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .hl-photo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media screen and (max-width: 991px) {
+    .hl-hero { padding-top: 130px; min-height: 0; }
+    .hl-hero-company { font-size: 40px; }
+    .hl-hero-title { font-size: 26px; }
+    .hl-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hl-cert-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hl-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hl-photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media screen and (max-width: 767px) {
+    .hl-section { padding: 48px 0; }
+    .hl-section-title { font-size: 28px; }
+    .hl-hero { padding: 110px 0 40px; }
+    .hl-hero-company { font-size: 30px; }
+    .hl-hero-title { font-size: 21px; }
+    .hl-hero-desc { font-size: 16px; }
+    .hl-stat strong { font-size: 26px; }
+    .hl-page-hero { padding: 120px 0 40px; }
+    .hl-page-title { font-size: 30px; }
+    .hl-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .hl-line { padding: 16px; }
+    .hl-line-title { font-size: 21px; }
+    .hl-video-grid { grid-template-columns: 1fr; }
+    .hl-photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hl-float-actions { right: 10px; bottom: 12px; gap: 8px; }
+    .hl-float-btn { min-width: 84px; padding: 8px 14px; font-size: 14px; }
+    .btn-scroll-to-top { bottom: 112px !important; right: 18px !important; }
+}
+@media screen and (max-width: 480px) {
+    .hl-cards { grid-template-columns: 1fr; }
+    .hl-cert-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hl-grade-head { grid-template-columns: auto 1fr auto; }
+    .hl-hero-actions .hl-btn { flex: 1 1 100%; justify-content: center; }
+}
