@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="copy-right"><?php pll_e('2023 Copyright Hai Linh Plastic. All Rights Reserved'); ?></div>
+            <div class="copy-right"><?php pll_e('2021 Copyright Hai Linh Plastic. All Rights Reserved'); ?></div>
         </footer>
         <div id="top" class="btn-scroll-to-top"><i class="micon-top"></i></div>
         <div class="menu-right-switch-language">
