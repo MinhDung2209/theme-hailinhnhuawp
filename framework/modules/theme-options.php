@@ -124,10 +124,10 @@ function custom_theme_options() {
         'label'       => __( 'Theme Information', 'hongtq_dev' ),
         'desc'        => __( '<p>Theme Name: Hai Linh Plastic Website</p>
                             <p>Theme URI: </p>
-                            <p>Author: Dũng Stradevn AI</p>
+                            <p>Author: Dũng AI (minhdung2209.work@gmail.com)</p>
                             <p>Author URI: https://cv.gnud.io.vn</p>
                             <p>Description: Hai Linh plastic theme wordpress</p>
-                            <p>Version: v1.5</p>', 'hongtq_dev' ),
+                            <p>Version: v1.6</p>', 'hongtq_dev' ),
         'type'        => 'textblock-titled',
         'section'     => 'general_settings',
         'operator'    => 'and'

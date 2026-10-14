@@ -153,7 +153,7 @@
 /*-----------------------------------------------------------------------------------*/
 	if(!function_exists('ew_custom_admin_footer')){
 		function ew_custom_admin_footer() {
-			echo '<a href="https://cv.gnud.io.vn" target="_blank" rel="noopener">Thiết kế website bởi Dũng Stradevn AI</a>';
+			echo 'Thiết kế website bởi <a href="https://cv.gnud.io.vn" target="_blank" rel="noopener" title="minhdung2209.work@gmail.com">Dũng AI</a>';
 		}
 		add_filter('admin_footer_text', 'ew_custom_admin_footer');
 	}
