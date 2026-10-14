@@ -122,7 +122,7 @@ function custom_theme_options() {
       array(
         'id'          => 'theme_information',
         'label'       => __( 'Theme Information', 'hongtq_dev' ),
-        'desc'        => __( '<p>Theme Name: Hai Linh Plastic Website</p>
+        'desc'        => __( '<p>Theme Name: Hai Linh plastic - minhdungai</p>
                             <p>Theme URI: </p>
                             <p>Author: Dũng AI (minhdung2209.work@gmail.com)</p>
                             <p>Author URI: https://cv.gnud.io.vn</p>
