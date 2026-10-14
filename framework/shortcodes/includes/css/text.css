@@ -1,0 +1,12 @@
+/* Shortcode text */
+.sc-text-wrap {
+	display:inline-block;
+	text-align:center;
+}
+.sc-text-wrap p {
+	font-style:italic;
+}
+.sc-text-wrap h3 {
+	color:#333 ;
+	text-transform:uppercase;
+}

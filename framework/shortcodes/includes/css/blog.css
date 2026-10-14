@@ -1,0 +1,9 @@
+/* Shortcode blog */
+.sc-blog .owl-item {
+	padding-left:15px;
+	padding-right:15px;
+}
+#sc-blog {
+	margin-left:-15px;
+	margin-right:-15px;
+}

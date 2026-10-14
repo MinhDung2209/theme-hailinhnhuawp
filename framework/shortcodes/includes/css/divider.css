@@ -1,0 +1,31 @@
+/***SHORTCODE-DIVIDER***/
+.sc_divider{
+	position: relative;
+	margin-top:7px;
+	text-align: center;
+}
+.sc_divider span{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	border-bottom: solid 3px #26414c;
+	z-index: 1;
+}
+.sc_divider .sc_divider_text{
+	min-width: 100px;
+	height: 50px;
+	border:3px solid #26414c;
+	background-color: #FFF;
+	display: inline-block;
+	position: relative;
+	z-index: 2;
+}
+.sc_divider .sc_divider_text h6{
+	display: block;
+	color: #26414c;
+	padding-left: 20px;
+	padding-right: 20px;
+	line-height: 1.3;
+	text-align:center;
+}

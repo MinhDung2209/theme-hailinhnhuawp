@@ -1,0 +1,48 @@
+/*** SHORTCODE-TEXTBOX***/
+.sc-textbox{
+	padding:0;
+	width: 100%;
+}
+.sc-textbox .hi-icon-wrap a.hi-icon i {
+	color: #d2d2d2 ;
+	border-color:#d2d2d2;
+}
+.sc-textbox .hi-icon-effect-1 a:hover i {
+	color:#fff ;
+}
+.sc-textbox .box-wwd{
+	width:100%;
+	height: auto;
+	text-align: center;
+	margin-top: 80px;
+	margin-right: 40px;
+}
+.sc-textbox .box-wwd section#set-1 {
+	float:none;
+	margin-bottom:27px;
+}
+.sc-textbox .box-wwd section#set-1 a{
+	padding: 0;
+	line-height: 45px;
+	text-align: center;
+}
+.sc-textbox .box-wwd .textbox-content h5.title{
+	color: #343434 ;
+	float:none;
+}
+.box-wwd .ke{
+	width: 80px;
+	height: 3px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color:#d2d2d2;
+	float:none; 
+}
+.box-wwd h5.title{
+	font-weight: bold;
+}
+.box-wwd .content{
+	color: #545454;
+	font-size: 12.85px;
+	float:none;
+}

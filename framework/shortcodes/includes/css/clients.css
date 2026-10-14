@@ -1,0 +1,23 @@
+#clients{}
+#clients .client-item{
+	padding-bottom:30px;	
+}
+#clients .client-item .item img{max-width:100%;width:inherit}
+#clients .client-item .item{	
+	max-width:100%;
+	height: 102px;	
+	opacity: 0.3
+}
+#clients .client-item .item-1,#clients .client-item .current-item{
+	opacity: 1;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+#clients .client-item .item{	
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;	
+}

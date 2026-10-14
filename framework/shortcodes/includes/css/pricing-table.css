@@ -1,0 +1,181 @@
+/***************************
+	Picing-Table
+****************************/
+.bg_pricing{
+	width: 100%;
+	min-height: 275px;
+	background:url(../images/bg_pricingtable.jpg) no-repeat fixed;
+	background-size: cover;
+}
+.wrap_pricing{
+	width: 300px;
+	margin-right: 30px;
+}
+.bg_pricing h2{
+	margin-top: 120px;
+	font-size: 41.67px;
+	color: #FFF;
+}
+.bg_pricing p{
+	font-size: 34.72px;
+	color: #FFF;
+}
+.box_pricing{
+	width: 100%;
+}
+.box_pricing p{
+	margin: 0px;
+}
+.box_pricing .wp_box{
+	width: 100%;
+	padding-left: 90px;
+	margin-bottom: 80px;
+}
+.box_pricing .box_main ,.box_pricing .box_main_highligh{
+	width: 300px;
+	border:1px solid #f2f2f2;
+	padding: 0px;
+	margin-top: 90px;
+	text-align: center;
+}
+.box_pricing .box_main_highligh{
+	margin-top: 60px;
+}
+.box_pricing .box_main:hover{
+	border-color: #69c4a3;
+}
+.box_pricing .box_main:hover .num_price{
+		font-weight: 900;
+	}
+.box_pricing .box_main:hover .top_box{
+	background-color: #69c4a3;
+}
+.box_pricing .box_main li{
+	width: 100%;
+	list-style: none;
+}
+.box_pricing .box_main .top_box , #box_pricing .box_main_highligh .top_box{
+	width: 100%;
+	background-color: #343434;
+	min-height: 70px;
+	margin: 0 auto;
+}
+.box_pricing .box_main .top_box h5{
+	text-transform: capitalize;
+	margin: 0 auto;
+	line-height: 70px;
+	font-family: Myriad Pro;
+}
+.box_pricing .box_main_highligh .top_box{
+	height: 100px;
+}
+.box_pricing .box_main_highligh .top_box h5{
+	line-height: 130px;
+}
+.box_pricing .box_main .price{
+	min-height: 167px;
+	background-color: #69c4a3;
+}
+.box_pricing .box_main .price .num_price{
+	font-size: 111.11px;
+	color: #FFF;
+}
+.box_pricing .box_main_highligh .price .num_price{
+	font-weight: 900;
+}
+.box_pricing .box_main .price .units{
+	color: #FFF;
+	line-height: 1;
+	padding-top: 27px;
+	margin-bottom: -4px;
+	text-transform: uppercase;
+}
+.box_pricing .box_main .price .money{
+	vertical-align: top;
+	font-family: Montserrat;
+	font-size: 27.78px;
+	color: #FFF;
+}
+.box_pricing .box_main .price .text_bt{
+	font-size: 12.85px;
+	color: #FFF;
+	padding-bottom: 20px;
+}
+.box_pricing .box_main .bg_table_row a{
+	margin: 12px 0px;
+}
+.box_pricing .box_main .bg_table_row:nth-child(2n+1){
+	background-color: #fdfdfd;
+	min-height: 47px;
+	padding: 12px 0px;
+	border-bottom: 1px solid #f2f2f2;
+}
+.box_pricing .box_main .bg_table_row .box_button{
+	display: inline-block;
+}
+.box_pricing .box_main .bg_table_row:nth-child(2n+2){
+	min-height: 47px;
+	padding: 8px 10px;
+	border-bottom: 1px solid #f2f2f2;
+}
+.box_pricing .box_main .bg_table_row:last-child{
+	border-bottom: none;
+}
+.box_pricing .box_main .bg_table_row a{
+	font-family: Open Sans;
+	font-size: 12.85px;
+	color: #545454;
+	text-transform: capitalize;
+}
+.box_pricing .box_main .bg_table_row a:hover{
+	color: #69c4a3;
+}
+.box_pricing .box_main .bt-box_main{
+	min-height: 80px;
+	line-height: 80px;
+}
+.box_pricing .box_main .bt-box_main .bt-buy{
+	width: 111px;
+	height: 40px;
+	background-color: #69c4a3;
+	border:0px;
+	font-size: 12.15px;
+	color: #FFF;
+}
+
+.table_pricing{
+	width: 100%;
+	margin-bottom: 40px;
+	margin-left: 107px;
+}
+.table_pricing .column , .table_pricing .list {
+	max-width: 933px;
+	padding: 0px;
+	margin-bottom: 0px;
+	background-color: #69c4a5;
+}
+.table_pricing .pa_column{
+	list-style: none;
+	float: left;
+	padding: 20px 150px 10px 40px;
+	font-family: Open Sans;
+	font-size: 12.85px;
+	color: #FFF;
+}
+.table_pricing .list:nth-child(2n+1){
+	background-color: #FFF;
+	border: 1px solid #f2f2f2;
+}
+.table_pricing .list:nth-child(2n+2){
+	background-color: #fdfdfd;
+	border: 1px solid #f2f2f2;
+	border-bottom: 0;
+	border-top: 0;
+}
+.table_pricing .list .pa_column{
+	color: #545454;
+	border-right: 1px solid #f2f2f2;
+}
+.table_pricing .list .pa_column:last-child{
+	border-right: none;
+}

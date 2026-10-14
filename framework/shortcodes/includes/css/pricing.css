@@ -1,0 +1,230 @@
+/***************************
+	Picing-Table
+
+****************************/
+#bg_pricing{
+	width: 100%;
+	height: 275px;
+	background:url(../images/bg_pricingtable.jpg) no-repeat fixed;
+}
+#bg_pricing h2{
+	margin-top: 120px;
+	margin-left: 140px;
+	font-family: Montserrat;
+	font-size: 41.67px;
+	color: #FFF;
+}
+#bg_pricing p{
+	font-family: Open Sans;
+	font-size: 34.72px;
+	color: #FFF;
+	margin-left: 140px;
+}
+#box_pricing{
+	width: 100%;
+}
+#box_pricing .wp_box{
+	width: 1000px;
+	margin-left: 70px;
+}
+#box_pricing .box_main{
+	width: 300px;
+	height: 560px;
+	border:1px solid #f2f2f2;
+	padding: 0px;
+	margin-top: 90px;
+	text-align: center;
+}
+#box_pricing .box_main:hover{
+	border-color: #69c4a3;
+}
+#box_pricing .box_main li{
+	width: 100%;
+	list-style: none;
+}
+#box_pricing .box_main .top_box{
+	width: 100%;
+	background-color: #343434;
+	height: 70px;
+	margin: 0 auto;
+}
+#box_pricing .box_main .top_box:hover{
+	background-color: #69c4a3;
+}
+#box_pricing .box_main .price{
+	height: 167px;
+	background-color: #69c4a3;
+	color: #FFF;
+}
+#box_pricing .box_main .price .text{
+	height: 80px;
+	font-size: 17.36px;
+	color: #FFF;
+	font-family: Montserrat;
+	text-transform: uppercase;
+}
+#box_pricing .box_main .price .text .num{
+	font-size: 111.11px;
+	font-family:Montserrat;
+}
+#box_pricing .box_main .price .text_bt{
+	padding-top: 38px;
+	font-size: 12.85px;
+	font-family: Open Sans;
+	color: #FFF;
+}
+#box_pricing .box_main .y-bg{
+	background-color: #fdfdfd;
+	height: 47px;
+	line-height: 47px;
+	border-bottom: 1px solid #f2f2f2;
+}
+#box_pricing .box_main .y-bg a{
+	font-family: Open Sans;
+	font-size: 12.85px;
+	color: #545454;
+}
+#box_pricing .box_main .y-bg a:hover{
+	color: #69c4a3;
+	text-decoration: none;
+}
+#box_pricing .box_main .n-bg{
+	height: 47px;
+	line-height: 47px;
+	border-bottom: 1px solid #f2f2f2;
+}
+#box_pricing .box_main .n-bg a{
+	font-family: Open Sans;
+	font-size: 12.85px;
+	color: #545454;
+}
+#box_pricing .box_main .n-bg a:hover{
+	color: #69c4a3;
+	text-decoration: none;
+}
+#box_pricing .box_main .bt-box_main{
+	height: 80px;
+	margin-top: 20px;
+}
+#box_pricing .box_main .bt-box_main .bt-buy{
+	width: 111px;
+	height: 40px;
+	background-color: #69c4a3;
+	border:0px;
+	font-family: Montserrat;
+	font-size: 12.15px;
+	color: #FFF;
+	text-transform: uppercase;
+}
+
+#box_pricing .box_main_highligh{
+	width: 300px;
+	height: 560px;
+	border:1px solid #f2f2f2;
+	padding: 0px;
+	margin-top: 60px;
+	text-align: center;
+}
+#box_pricing .box_main_highligh:hover{
+	border-color: #69c4a3;
+}
+#box_pricing .box_main_highligh li{
+	width: 100%;
+	list-style: none;
+}
+#box_pricing .box_main_highligh .top_box{
+	width: 100%;
+	background-color: #343434;
+	height: 100px;
+	margin: 0 auto;
+}
+#box_pricing .box_main_highligh .top_box:hover{
+	background-color: #69c4a3;
+}
+#box_pricing .box_main_highligh .price{
+	height: 167px;
+	background-color: #69c4a3;
+	color: #FFF;
+}
+#box_pricing .box_main_highligh .price .text{
+	height: 80px;
+	font-size: 17.36px;
+	color: #FFF;
+	font-family: Montserrat;
+	text-transform: uppercase;
+}
+
+#box_pricing .box_main_highligh .price .text .num{
+	font-size: 111.11px;
+	font-family:Montserrat;
+}
+#box_pricing .box_main_highligh .price .text_bt{
+	padding-top: 38px;
+	font-size: 12.85px;
+	font-family: Open Sans;
+	color: #FFF;
+}
+#box_pricing .box_main_highligh .y-bg{
+	background-color: #fdfdfd;
+	height: 47px;
+	line-height: 47px;
+	border-bottom: 1px solid #f2f2f2;
+}
+#box_pricing .box_main_highligh .y-bg a{
+	font-family: Open Sans;
+	font-size: 12.85px;
+	color: #545454;
+}
+#box_pricing .box_main_highligh .y-bg a:hover{
+	color: #69c4a3;
+	text-decoration: none;
+}
+#box_pricing .box_main_highligh .n-bg{
+	height: 47px;
+	line-height: 47px;
+	border-bottom: 1px solid #f2f2f2;
+}
+#box_pricing .box_main_highligh .n-bg a{
+	font-family: Open Sans;
+	font-size: 12.85px;
+	color: #545454;
+}
+#box_pricing .box_main_highligh .n-bg a:hover{
+	color: #69c4a3;
+	text-decoration: none;
+}
+#box_pricing .box_main_highligh .bt-box_main{
+	height: 80px;
+	margin-top: 20px;
+}
+#box_pricing .box_main_highligh .bt-box_main .bt-buy{
+	width: 111px;
+	height: 40px;
+	background-color: #69c4a3;
+	border:0px;
+	font-family: Montserrat;
+	font-size: 12.15px;
+	color: #FFF;
+	text-transform: uppercase;
+}
+
+#table_pricing{
+	width: 100%;
+}
+#table_pricing .table_box{
+	width: 930px;
+	margin-left: 100px;
+}
+#table_pricing .table_box .table thead{
+	background-color: #69c4a5;
+	color: #FFF;
+}
+#table_pricing .table_box th{
+	padding-left: 20px;
+}
+#table_pricing .table_box .table tr{
+	height: 50px;
+}
+#table_pricing .table_box td{
+	padding-left: 20px;
+}

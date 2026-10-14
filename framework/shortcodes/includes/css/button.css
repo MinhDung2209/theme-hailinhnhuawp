@@ -1,0 +1,41 @@
+/***SHORTCODE BUTTON***/
+.box_button{
+	color: #343434;
+	border: 3px solid #343434;
+	padding: 10px 25px;
+	margin-left: 12px;
+	font-size: 13px;
+	margin-right: 15px;
+	text-transform: none;
+	-webkit-transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+	-moz-transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+	-o-transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+	transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+}
+.box_button:hover{
+	background-color: #343434;
+	-webkit-transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+	-moz-transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+	-o-transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+	transition: color .2s ease-in-out,background .2s ease-in-out,border .2s ease-in-out;
+	color: #FFF;
+	border-color: #343434;
+	text-decoration:none;
+}  
+a.box_button_color{
+	margin-top: 25px;
+	border-color: #69c4a3;
+	color: #69c4a3 ;
+	background-color: transparent;
+}
+a.box_button_color:hover{
+	background-color: #69c4a3;
+	border-color: #69c4a3;
+	color: #FFF ;
+}
+.scrolled .box_button {
+	padding: 5px 10px;
+}
+/***END SHORTCODE-BUTTON***/

@@ -1,0 +1,20 @@
+/* Shortcode dropcap */
+.sc-dropcap {
+	display:inline-block;
+	margin:6px 15px 11px 0;
+	width:40px;
+	height:40px;
+	float:left;  
+	background-color:#69c4a3;
+	position:relative
+}
+.sc-dropcap p {
+	padding:0;
+	color:#fff;
+	text-align:center;
+	line-height:38px;
+	font-size:20px;
+}
+.sc-dropcap-circle {
+	border-radius:50%;
+}

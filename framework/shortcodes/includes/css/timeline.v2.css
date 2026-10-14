@@ -1,0 +1,50 @@
+/* Timeline */
+.timeline_items { background: url(../../../images/line.png) repeat-y top center;padding: 0}
+.timeline_items li{list-style-type: none; min-height: 202px; padding: 0;position: relative; margin-bottom:98px }
+.timeline_items li h5 {font-family: "Montserrat";font-size: 20.83px;color: #343434;text-transform: capitalize;display: -ms-flexbox;-ms-flex-pack: center;-ms-flex-align: center;-ms-flex-orient: vertical;display: -moz-box;-moz-box-pack: center;-moz-box-align: center;-moz-box-orient: vertical;display: -webkit-box;-webkit-box-pack: center;-webkit-box-orient: vertical;display: box;box-pack: center;box-align: center;box-orient: vertical;min-height: 202px;margin-top:0;margin-bottom:0}
+.timeline_items li.even h5{margin-left: 5px}
+.timeline_items li.odd h5{margin-right: 5px}
+.timeline_items li h5 .bg-white {top:0;height: 202px;width: 180px;position: absolute;left: 50%;margin-left: -90px;background: white;padding: 11px 0}
+.timeline_items li h5 .time {line-height: 30px;height: 100%;display: -ms-flexbox;-ms-flex-pack: center;-ms-flex-align: center;-ms-flex-orient: vertical;display: -moz-box;-moz-box-pack: center;-moz-box-align: center;-moz-box-orient: vertical;display: -webkit-box;-webkit-box-pack: center;-webkit-box-align: center;-webkit-box-orient: vertical;display: box;box-pack: center;box-align: center;box-orient: vertical}
+.timeline_items li .des-timeline {width: 39%}
+.timeline_items li.odd .des-timeline {float:right}
+.timeline_items li.even .des-timeline {float:left;text-align: right}
+.timeline_items li.odd .content-timeline {margin-left: 5px;width:100%;display: -ms-flexbox;-ms-flex-pack: center;-ms-flex-align: start;-ms-flex-orient: vertical;display: -moz-box;-moz-box-pack: center;-moz-box-orient: vertical;display: -webkit-box;-webkit-box-pack: center;-webkit-box-align: start;-webkit-box-orient: vertical;display: box;box-pack: center;box-align: start;box-orient: vertical;min-height: 202px}
+.timeline_items li .even .desc{text-align:right}
+.timeline_items li.even .content-timeline {margin-left: -5px;width:100%;display: -ms-flexbox;-ms-flex-pack: center;-ms-flex-align: end;-ms-flex-orient: vertical;display: -moz-box;-moz-box-pack: center;-moz-box-orient: vertical;display: -webkit-box;-webkit-box-pack: center;-webkit-box-align: end;-webkit-box-orient: vertical;display: box;box-pack: center;box-align: end;box-orient: vertical;min-height: 202px}
+.timeline_items li .desc {background: rgba(0, 0, 0, 0.03);padding:30px;width: 100%}
+.timeline_items li.odd .title-img{ float: left; text-align: right;width: 39%}
+.timeline_items li.even .title-img{ float: right;width: 39%}
+.timeline_items li.odd .desc:after {margin-right: -5px;content: "";display: block;width: 0;height: 0;position: absolute;top: 50%;margin-top:-10px;right: 39%;border-top: 10px solid transparent;border-bottom: 10px solid transparent;border-left: none;border-right: 10px solid rgba(0, 0, 0, 0.03)}
+.timeline_items li.even .desc:after {margin-left: -5px;content: "";display: block;width: 0;height: 0;position: absolute;top: 50%;margin-top:-10px;left: 39%;border-top: 10px solid transparent;border-bottom: 10px solid transparent;border-right: none;border-left: 10px solid rgba(0, 0, 0, 0.03)}
+.timeline_items li:last-child{padding-bottom: 0;margin-bottom:0}
+@-moz-document url-prefix(){
+ 
+    .timeline_items li.odd .desc:after {
+        margin-right:-5px;
+    }
+    .timeline_items li.even .desc:after {
+        margin-left: 0
+    }	
+}
+@media only screen and (max-width: 1200px){
+	.timeline_items{background:none}	
+}
+
+@media only screen and (max-width: 992px){	
+	.timeline_items li{margin-bottom: 20px}
+	.timeline_items li .title-img{width: 100%!important;}
+	.timeline_items li h5{width: 100%;line-height: inherit;text-align: center!important;margin-top: 200px;min-height: 25px;margin-bottom: 20px}
+	.timeline_items li h5 .bg-white {top: 0}
+	.timeline_items li h5 .image-time{top: 0;margin-top:0}
+	.timeline_items li .des-timeline{width:100%!important;margin:0;float:none!important;text-align:center}	
+	.timeline_items li .desc{width: 100%;margin-top:17px;text-align: center!important}		
+	.timeline_items li .content-timeline{min-height: 0!important}	
+	.timeline_items li.even .desc { text-align: center}
+	.timeline_items li .desc:after{border:none!important/* top: 232px!important;left: 50%!important;margin-left: -10px;border-top: 10px solid transparent!important;border-right: 10px solid transparent!important;border-left: 10px solid transparent!important;border-bottom: 10px solid rgba(0, 0, 0, 0.03)!important */}
+	@-moz-document url-prefix(){
+		.timeline_items li .desc:after{top: 235px!important;}
+	}
+}
+
+

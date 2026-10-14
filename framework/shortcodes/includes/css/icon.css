@@ -1,0 +1,44 @@
+/* Shortcode icon */
+.hi-icon-wrap {
+	width:50px;
+	display:inline-block;
+}
+.hi-icon-rounded {
+	border-radius:50%;
+}
+.hi-icon-wrap .hi-icon {
+	display: inline-block;
+	font-size: 24px;
+	cursor: pointer;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	color:#d2d2d2 ;
+	width: 50px;
+	height: 50px;
+	border: 3px solid #d2d2d2;
+	margin-bottom: 27px;
+	line-height:45px;
+}
+.hi-icon-wrap .hi-icon:hover {
+	color:#fff ;
+	-webkit-transition: color .2s ease-in-out,background .2s ease-in-out;
+	-moz-transition: color .2s ease-in-out,background .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out,background .2s ease-in-out;
+	-o-transition: color .2s ease-in-out,background .2s ease-in-out;
+	transition: color .2s ease-in-out,background .2s ease-in-out;
+}
+
+.hi-icon-effect-1 .hi-icon {
+	-webkit-transition: color .2s ease-in-out,background .2s ease-in-out;
+	-moz-transition: color .2s ease-in-out,background .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out,background .2s ease-in-out;
+	-o-transition: color .2s ease-in-out,background .2s ease-in-out;
+	transition: color .2s ease-in-out,background .2s ease-in-out;
+}
+.no-touch .hi-icon-effect-1 .hi-icon:hover {
+	background-color: #69c4a5 ;
+	border-color: #69c4a5 ;
+}

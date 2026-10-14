@@ -1,0 +1,21 @@
+/* Shortcode tab */
+.wpb_wrapper ul.wpb_tabs_nav li.ui-state-default a.ui-tabs-anchor {
+	color:#343434;
+	opacity:0.6;
+	background-color:#fff;
+	padding-left:0;
+	padding-right:0;
+	padding-right:30px;
+	text-transform:none;
+}
+.wpb_wrapper ul.wpb_tabs_nav li.ui-tabs-active a.ui-tabs-anchor,.wpb_wrapper ul.wpb_tabs_nav li.ui-state-default a.ui-tabs-anchor:hover {
+	opacity:1;
+}
+.wpb_wrapper .wpb_tab {
+	border-top:solid 3px #343434;
+	padding-left:0 !important;
+	color:#343434;
+	font-size:12.85px;
+	background-color:#fff !important;
+}
+

@@ -1,0 +1,77 @@
+.sc-banner {
+	position:relative;
+	overflow:hidden;
+}
+.banner-inner{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	text-align:center;
+	-webkit-transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-ms-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+.banner-inner:before {
+  content: '';
+  display: inline-block;
+  height: 100%; 
+  vertical-align: middle;
+}
+.banner-inner .heading-text {
+	max-width:90%;
+	display:inline-block;
+	vertical-align: middle;
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+.banner-inner .heading-text .content, .banner-inner .heading-text p{
+	padding:0 29px;
+	text-transform:none;
+	font-size:13.89px;
+	color:#fff;
+	margin:0 auto;
+}
+.banner-inner .heading-text .divider {
+	height:3px;
+	background-color:#fff;
+	width:150px;
+	margin:20px auto;
+}
+.sc-banner:hover .banner-inner {
+	opacity:0;
+}
+.sc-banner .banner-inner.hover {
+	opacity:0;
+	top:100%;
+}
+.sc-banner:hover .banner-inner.hover {
+	opacity:1;
+	top:0;
+}
+.sc-banner .img-bg {
+	width:100%;
+	height:auto;
+}
+.sc-banner .overlay-hover {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right:0;
+	-webkit-transition: background .2s ease-in-out;
+	-moz-transition: background .2s ease-in-out;
+	-ms-transition: background .2s ease-in-out;
+	-o-transition: background .2s ease-in-out;
+	transition: background .2s ease-in-out;
+}
+.sc-banner:hover .overlay-hover {
+	background: rgba(105,196,163,0.75);
+}

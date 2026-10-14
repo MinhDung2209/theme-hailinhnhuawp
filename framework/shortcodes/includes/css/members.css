@@ -1,0 +1,55 @@
+#members{text-align: center;color:#343434}
+#members .member-item .item {cursor: pointer;}
+#members .member-item .item .hover-image{
+	position: absolute;
+	top: 0;
+	left: 19px;
+	width: 255px;
+	height: 257px;		
+	opacity: 0;
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	-o-transition: 1s;
+	transition: 1s;
+}
+#members .member-item .item:hover .hover-image{
+	opacity: 0.4;
+}
+#members .member-item .item img{
+	border-radius: 50%;
+	overflow: hidden;
+	width:255px;
+	height:257px
+}
+#members .member-info .member-name{
+	font-family: 'Montserrat';
+	font-size:20.83px;
+	color:#343434;
+	margin:20px 0 0 0
+}
+#members .member-info hr{
+	width:80px;
+	height: 3px; 
+	background: #ccc; 	
+	margin: 14px auto;
+}
+#members .member-info .mb-content{
+	font-family: 'Open Sans';
+	font-size:12.85px;
+	
+}
+#members .member-info .member-social{
+	margin-top:14px
+}
+#members .member-info .member-social .fa{
+	font-size:13.89px;
+	color:#343434;
+	border:2px solid #343434;
+	width:22px;
+	height:22px;
+	padding-top:2px;
+	margin:0 2px
+}
+
+
+

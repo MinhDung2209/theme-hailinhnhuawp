@@ -1,0 +1,27 @@
+/*** SHORTCODE-MESSAGEBOX***/
+.sc-messagebox{
+	display:block;
+	height:100%;
+	text-align:center;
+	margin:0 auto;
+	background-color:#69c4a3;
+	padding:0;
+	padding:13px 40px;
+	border: solid 1px transparent;
+	position:relative;
+}
+.sc-messagebox>i {
+	font-size:24px;
+	margin-right:5px;
+}
+.sc-messagebox span{
+	position:absolute;
+	font-weight:normal;
+	text-align:right;
+	right:20px;
+	top:43%;
+	margin-top:-6.5px;
+}
+.sc-messagebox,.sc-messagebox span a{
+	color:#fff;
+}
