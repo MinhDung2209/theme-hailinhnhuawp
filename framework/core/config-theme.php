@@ -153,7 +153,7 @@
 /*-----------------------------------------------------------------------------------*/
 	if(!function_exists('ew_custom_admin_footer')){
 		function ew_custom_admin_footer() {
-			echo '<a href="https://salethemeswp.com/" title="Thiết kế website, thiết kế web theo chuẩn" target="_blank">Thiết kế website bởi Sale themes wordpress</a>';
+			echo 'Thiết kế website bởi Dũng Stradevn AI';
 		}
 		add_filter('admin_footer_text', 'ew_custom_admin_footer');
 	}

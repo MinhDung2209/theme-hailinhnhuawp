@@ -124,10 +124,10 @@ function custom_theme_options() {
         'label'       => __( 'Theme Information', 'hongtq_dev' ),
         'desc'        => __( '<p>Theme Name: Hai Linh Plastic Website</p>
                             <p>Theme URI: </p>
-                            <p>Author: Sale themes wordpress</p>
-                            <p>Author URI: https://salethemeswp.com</p>
-                            <p>Description: Theme này được phát triển bởi salethemeswp.com</p>
-                            <p>Version: v1.0</p>', 'hongtq_dev' ),
+                            <p>Author: Dũng Stradevn AI</p>
+                            <p>Author URI: </p>
+                            <p>Description: Hai Linh plastic theme wordpress</p>
+                            <p>Version: v1.1</p>', 'hongtq_dev' ),
         'type'        => 'textblock-titled',
         'section'     => 'general_settings',
         'operator'    => 'and'
