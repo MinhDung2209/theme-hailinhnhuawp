@@ -9,6 +9,10 @@ $stats = hl_stats();
             <h2 class="hl-hero-company"><?php hl_e('hero_title'); ?></h2>
             <p class="hl-hero-title"><?php hl_e('hero_subtitle'); ?></p>
             <p class="hl-hero-desc"><?php hl_e('hero_desc'); ?></p>
+            <div class="hl-hero-more">
+                <p class="hl-hero-question"><?php hl_e('hero_question'); ?></p>
+                <p class="hl-hero-answer"><?php hl_e('hero_question_text'); ?></p>
+            </div>
             <div class="hl-hero-actions">
                 <a class="hl-btn hl-btn-primary" href="<?php echo esc_url(hl_products_url()); ?>"><?php hl_e('btn_view_products'); ?></a>
                 <a class="hl-btn hl-btn-outline" href="<?php echo esc_url(hl_contact_url()); ?>"><?php hl_e('btn_request_quote'); ?></a>

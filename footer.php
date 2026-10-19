@@ -12,23 +12,21 @@
                             </div>
 
                             <p class="mb-0 text-dark"><i class="fa-solid fa-location-dot mr-3 mb-0"></i> <?php pll_e('footer_text_1'); ?></p>
+                            <?php /* Hai Linh v2: lay tu Theme Options > TALK TO US */
+                            foreach (hl_sales_contacts() as $hl_row) { ?>
                             <div class="mb-0 d-flex">
                                 <i class="fa-solid fa-phone mr-3"></i>
                                 <div>
-                                    <label class="mb-0"><?php pll_e('footer_text_6'); ?></label>
-                                    <div>WhatsApps: <a class="text-dark" href="tel:+84378680868">(+84) 84378680868</a></div>
-                                    <div>Email: <a class="text-dark" href="mailto:info@hailinhplastic.com">info@hailinhplastic.com</a></div>
+                                    <label class="mb-0"><?php echo esc_html($hl_row['label']); ?></label>
+                                    <?php if ($hl_row['phone']) { ?>
+                                        <div>WhatsApps: <a class="text-dark" href="tel:+<?php echo esc_attr($hl_row['tel']); ?>"><?php echo esc_html($hl_row['phone']); ?></a></div>
+                                    <?php } ?>
+                                    <?php foreach ($hl_row['emails'] as $hl_i => $hl_email) { ?>
+                                        <div<?php echo $hl_i ? ' class="hl-email-more"' : ''; ?>><?php echo $hl_i ? '' : 'Email: '; ?><a class="text-dark" href="mailto:<?php echo esc_attr($hl_email); ?>"><?php echo esc_html($hl_email); ?></a></div>
+                                    <?php } ?>
                                 </div>
                             </div>
-                            
-                            <div class="mb-0 d-flex">
-                                <i class="fa-solid fa-phone mr-3"></i>
-                                <div>
-                                    <label class="mb-0"><?php pll_e('footer_text_5'); ?></label>
-                                    <div>WhatsApps: <a class="text-dark" href="tel:+84358918210">(+84) 358918210</a></div>
-                                    <div>Email: <a class="text-dark" href="mailto:Annathu.do707@gmail.com">Annathu.do707@gmail.com</a></div>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                         <div class="col-xl-2 col-6">
                             <strong class="mb-3"><?php pll_e("footer_text_2"); ?></strong>

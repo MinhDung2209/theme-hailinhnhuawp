@@ -2,7 +2,7 @@
 /**
  * Hai Linh v2 - Bo sung giao dien moi (10/2026)
  *
- * - 5 dong san pham moi (product-cat) + bang ma hang (product)
+ * - 7 dong san pham (product-cat) + bang ma hang (product); dong Filler co 7 muc con
  * - Hero trang chu, dai so lieu, nut noi Profile / Contact
  * - Quality & Certificates, Library, Contact & Map, mang xa hoi
  *
@@ -15,7 +15,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('HL_V2_VERSION', '2.1.3');
+define('HL_V2_VERSION', '2.2.0');
 
 /*-----------------------------------------------------------------------------------*/
 /*  Chu tren giao dien (dich qua Polylang > Translations, nhom "Hai Linh v2")
@@ -25,6 +25,8 @@ function hl_strings() {
         'hero_title'        => 'HAI LINH PLASTIC CO.,LTD',
         'hero_subtitle'     => 'Filler & Additive Masterbatch Manufacturer from Vietnam',
         'hero_desc'         => 'Breathable-film compound, Talc, White masterbatch, Bio filler and PE/PP/HDPE CaCO3 filler - consistent quality for export customers.',
+        'hero_question'     => 'Do you want to know more about filler masterbatch?',
+        'hero_question_text' => 'In the world of plastics, the term "filler masterbatch" has gained significant importance. But what exactly is filler masterbatch? In simple terms, filler masterbatch, also known as plastic filler, is a composite material made by combining CaCO3 (calcium carbonate) powder with virgin resin and specific additives.',
         'btn_view_products' => 'View Products',
         'btn_request_quote' => 'Request a Quote',
         'btn_quote_short'   => 'Request quote',
@@ -34,14 +36,18 @@ function hl_strings() {
         'btn_send_inquiry'  => 'Send inquiry',
         'btn_download_profile' => 'Download Profile / Catalog',
         'btn_back_to_line'  => 'Back to product line',
+        'btn_ask_quote'     => 'ASK FOR A QUOTE',
+        'btn_view_details'  => 'View details',
+        'related_products'  => 'Related products',
+        'sub_items_title'   => 'Applications',
         'products_title'    => 'Our Products',
-        'products_desc'     => 'Five product lines developed for film, fiber, injection and hygiene applications.',
+        'products_desc'     => 'Seven product lines for film, fiber, injection, hygiene and engineering plastics.',
         'filler_ratio'      => 'Filler ratio range (0-100%)',
         'grade_code'        => 'Grade code',
         'grade_resin'       => 'Base resin',
         'grade_filler'      => 'Filler loading',
         'other_grades'      => 'Other grades in this line',
-        'products_note'     => 'Listed in priority order 1-5. Filler ratio = % filler by weight in the masterbatch.',
+        'products_note'     => 'Listed in priority order 1-7. Filler ratio = % filler by weight in the masterbatch.',
         'other_products'    => 'Other products',
         'factory_title'     => 'Our factory',
         'factory_desc'      => 'Compounding lines, raw-material storage and packing under one roof in Mai Village, Dan Chu Commune, Phu Tho Province.',
@@ -236,6 +242,16 @@ function hl_theme_options($settings) {
             'type'  => 'textarea-simple',
             'rows'  => 3,
         ),
+        array(
+            'id'    => 'hl_talk_tab',
+            'label' => 'TALK TO US',
+            'desc'  => '<p>Các ô dưới đây là phần <b>TALK TO US</b> (trang Contact, cuối trang sản phẩm). Ô trống = ẩn dòng đó.</p>',
+            'type'  => 'textblock-titled',
+        ),
+        array('id' => 'hl_domestic_whatsapp', 'label' => 'Bán hàng trong nước - WhatsApp', 'type' => 'text', 'std' => '(+84) 84378680868', 'desc' => 'Ghi đúng như muốn hiện trên web.'),
+        array('id' => 'hl_domestic_email',    'label' => 'Bán hàng trong nước - Email', 'type' => 'text', 'std' => 'info@hailinhplastic.com'),
+        array('id' => 'hl_intl_whatsapp',     'label' => 'Bán hàng quốc tế - WhatsApp', 'type' => 'text', 'desc' => 'Chưa có thì để trống (ẩn dòng WhatsApp).'),
+        array('id' => 'hl_intl_emails',       'label' => 'Bán hàng quốc tế - Email', 'type' => 'textarea-simple', 'rows' => 2, 'std' => "sales02@hailinhplastic.com\nsales03@hailinhplastic.com", 'desc' => 'Mỗi dòng 1 email.'),
         array('id' => 'hl_social_zalo',     'label' => 'Link Zalo',     'type' => 'text', 'desc' => 'VD: https://zalo.me/84358918210. Bỏ trống = ẩn nút.'),
         array('id' => 'hl_social_facebook', 'label' => 'Link Facebook', 'type' => 'text', 'std' => 'https://www.facebook.com/nhuahailinh'),
         array('id' => 'hl_social_linkedin', 'label' => 'Link LinkedIn', 'type' => 'text'),
@@ -277,7 +293,7 @@ function hl_stats() {
         return $stats;
     }
     return array(
-        array('title' => '5',      'label' => 'Product lines'),
+        array('title' => '7',      'label' => 'Product lines'),
         array('title' => '20+',    'label' => 'Grade codes'),
         array('title' => '40-85%', 'label' => 'Filler loading'),
         array('title' => 'ISO 9001:2015', 'label' => 'Certified by ISOCERT'),
@@ -365,33 +381,76 @@ add_action('admin_init', function () {
 /*-----------------------------------------------------------------------------------*/
 function hl_term_fields($term = null) {
     $order    = $term ? get_term_meta($term->term_id, 'hl_line_order', true) : '';
+    $sub      = $term ? get_term_meta($term->term_id, 'hl_sub_order', true) : '';
     $subtitle = $term ? get_term_meta($term->term_id, 'hl_line_subtitle', true) : '';
+    $image    = $term ? get_term_meta($term->term_id, 'hl_line_image', true) : '';
     $gallery  = $term ? get_term_meta($term->term_id, 'hl_line_gallery', true) : '';
+    $related  = $term ? array_map('intval', (array) get_term_meta($term->term_id, 'hl_line_related', true)) : array();
+    $lang     = ($term && function_exists('pll_get_term_language')) ? pll_get_term_language($term->term_id) : '';
+    $lines    = array_filter(hl_get_product_lines(), function ($t) use ($term, $lang) {
+        if (!$term) return true;
+        return $t->term_id !== $term->term_id && (!$lang || pll_get_term_language($t->term_id) === $lang);
+    });
     ?>
     <tr class="form-field">
         <th scope="row"><label for="hl_line_order">Hai Linh: Số thứ tự dòng sản phẩm</label></th>
         <td>
             <input type="number" min="0" name="hl_line_order" id="hl_line_order" value="<?php echo esc_attr($order); ?>" style="width:120px">
-            <p class="description">1 đến 5. <b>Chỉ những dòng có số thứ tự mới hiện ở trang Products và trang chủ.</b> Để trống = ẩn (dùng cho các danh mục cũ).</p>
+            <p class="description">1 đến 7. <b>Chỉ những dòng có số thứ tự mới hiện ở trang Products và trang chủ.</b> Để trống = ẩn (danh mục cũ, hoặc mục con của 1 dòng).</p>
+        </td>
+    </tr>
+    <tr class="form-field">
+        <th scope="row"><label for="hl_sub_order">Hai Linh: Thứ tự mục con</label></th>
+        <td>
+            <input type="number" min="0" name="hl_sub_order" id="hl_sub_order" value="<?php echo esc_attr($sub); ?>" style="width:120px">
+            <p class="description">Chỉ dùng cho mục con (VD: Film Bags, Woven... trong Filler Masterbatch). Ô "Parent" ở trên chọn dòng cha.</p>
         </td>
     </tr>
     <tr class="form-field">
         <th scope="row"><label for="hl_line_subtitle">Hai Linh: Mô tả 1 dòng</label></th>
         <td>
             <input type="text" name="hl_line_subtitle" id="hl_line_subtitle" value="<?php echo esc_attr($subtitle); ?>">
-            <p class="description">VD: LDPE/LLDPE + CaCO3 for breathable backsheet film.</p>
+            <p class="description">VD: LDPE/LLDPE + CaCO3 for breathable backsheet film. Bài viết đầy đủ nhập ở ô "Description" phía trên.</p>
+        </td>
+    </tr>
+    <tr class="form-field">
+        <th scope="row"><label for="hl_line_image">Hai Linh: Ảnh chính</label></th>
+        <td>
+            <input type="text" name="hl_line_image" id="hl_line_image" value="<?php echo esc_attr($image); ?>">
+            <p><button type="button" class="button hl-media-btn" data-target="hl_line_image" data-multiple="0">Chọn ảnh chính</button></p>
+            <p class="description">Bỏ trống = dùng ảnh ở ô "Upload and Image" ở trên.</p>
         </td>
     </tr>
     <tr class="form-field">
         <th scope="row"><label for="hl_line_gallery">Hai Linh: Ảnh ứng dụng</label></th>
         <td>
             <textarea name="hl_line_gallery" id="hl_line_gallery" rows="4"><?php echo esc_textarea($gallery); ?></textarea>
-            <p><button type="button" class="button" id="hl_line_gallery_btn">Chọn ảnh ứng dụng</button></p>
-            <p class="description">Ảnh nhỏ hiện dưới ảnh chính (nên 2 ảnh). Mỗi dòng 1 link ảnh. Ảnh chính dùng ô "Upload and Image" ở trên.</p>
+            <p><button type="button" class="button hl-media-btn" data-target="hl_line_gallery" data-multiple="1">Chọn ảnh ứng dụng</button></p>
+            <p class="description">Ảnh nhỏ hiện dưới ảnh chính (nên 2 ảnh). Mỗi dòng 1 link ảnh.</p>
         </td>
     </tr>
+    <?php if ($lines) { ?>
+    <tr class="form-field">
+        <th scope="row">Hai Linh: Sản phẩm liên quan</th>
+        <td>
+            <input type="hidden" name="hl_line_related_sent" value="1">
+            <?php foreach ($lines as $line) { ?>
+                <label style="display:block;margin-bottom:4px"><input type="checkbox" name="hl_line_related[]" value="<?php echo esc_attr($line->term_id); ?>" <?php checked(in_array($line->term_id, $related, true)); ?>> <?php echo esc_html($line->name); ?></label>
+            <?php } ?>
+            <p class="description">Hiện ở cuối bài viết.</p>
+        </td>
+    </tr>
+    <?php } ?>
     <?php
 }
+
+/* Bai viet dong san pham nam o "Description": cho phep HTML nhu noi dung bai viet (tieu de, danh sach), khong loc het */
+add_action('init', function () {
+    if (has_filter('pre_term_description', 'wp_filter_kses')) {
+        remove_filter('pre_term_description', 'wp_filter_kses');
+        add_filter('pre_term_description', 'wp_filter_post_kses');
+    }
+});
 
 add_action('product-cat_add_form_fields', function () {
     echo '<table class="form-table" role="presentation">';
@@ -405,16 +464,25 @@ add_action('product-cat_edit_form_fields', function ($term) {
 
 function hl_save_term_fields($term_id) {
     if (!current_user_can('manage_categories')) return;
-    if (isset($_POST['hl_line_order'])) {
-        $order = trim(wp_unslash($_POST['hl_line_order']));
-        $order === '' ? delete_term_meta($term_id, 'hl_line_order') : update_term_meta($term_id, 'hl_line_order', absint($order));
+    foreach (array('hl_line_order', 'hl_sub_order') as $key) {
+        if (isset($_POST[$key])) {
+            $value = trim(wp_unslash($_POST[$key]));
+            $value === '' ? delete_term_meta($term_id, $key) : update_term_meta($term_id, $key, absint($value));
+        }
     }
     if (isset($_POST['hl_line_subtitle'])) {
         update_term_meta($term_id, 'hl_line_subtitle', sanitize_text_field(wp_unslash($_POST['hl_line_subtitle'])));
     }
+    if (isset($_POST['hl_line_image'])) {
+        update_term_meta($term_id, 'hl_line_image', esc_url_raw(trim(wp_unslash($_POST['hl_line_image']))));
+    }
     if (isset($_POST['hl_line_gallery'])) {
         $urls = array_filter(array_map('esc_url_raw', array_map('trim', explode("\n", wp_unslash($_POST['hl_line_gallery'])))));
         update_term_meta($term_id, 'hl_line_gallery', implode("\n", $urls));
+    }
+    if (isset($_POST['hl_line_related_sent'])) {
+        $ids = isset($_POST['hl_line_related']) ? array_map('absint', (array) $_POST['hl_line_related']) : array();
+        update_term_meta($term_id, 'hl_line_related', array_values(array_filter($ids)));
     }
 }
 add_action('created_product-cat', 'hl_save_term_fields');
@@ -426,18 +494,17 @@ add_action('admin_footer', function () {
     ?>
     <script>
     jQuery(function ($) {
-        var frame;
-        $('#hl_line_gallery_btn').on('click', function (e) {
+        $('.hl-media-btn').on('click', function (e) {
             e.preventDefault();
             if (!window.wp || !wp.media) return;
-            if (!frame) {
-                frame = wp.media({ title: 'Chọn ảnh ứng dụng', button: { text: 'Dùng các ảnh này' }, library: { type: 'image' }, multiple: true });
-                frame.on('select', function () {
-                    var box = $('#hl_line_gallery'), lines = $.trim(box.val()) ? $.trim(box.val()).split('\n') : [];
-                    frame.state().get('selection').each(function (att) { lines.push(att.toJSON().url); });
-                    box.val(lines.join('\n'));
-                });
-            }
+            var box = $('#' + $(this).data('target')), multiple = $(this).data('multiple') == 1;
+            var frame = wp.media({ title: $(this).text(), button: { text: 'Dùng ảnh này' }, library: { type: 'image' }, multiple: multiple });
+            frame.on('select', function () {
+                var urls = frame.state().get('selection').map(function (att) { return att.toJSON().url; });
+                if (!multiple) { box.val(urls[0] || ''); return; }
+                var lines = $.trim(box.val()) ? $.trim(box.val()).split('\n') : [];
+                box.val(lines.concat(urls).join('\n'));
+            });
             frame.open();
         });
     });
@@ -496,6 +563,10 @@ function hl_get_grades($term_id) {
         )),
     ));
 
+    // Chi lay bai co ma hang (bai san pham cu trong danh muc, VD Color Masterbatch, khong hien thanh 1 dong ma)
+    $posts = array_values(array_filter($posts, function ($p) {
+        return get_post_meta($p->ID, 'hl_grade_code', true) !== '';
+    }));
     usort($posts, function ($a, $b) {
         $oa = (int) get_post_meta($a->ID, 'hl_grade_order', true);
         $ob = (int) get_post_meta($b->ID, 'hl_grade_order', true);
@@ -526,11 +597,43 @@ function hl_grade_data($post) {
 }
 
 function hl_line_images($term) {
-    $main = get_term_meta($term->term_id, 'term_image', true);
+    $main = get_term_meta($term->term_id, 'hl_line_image', true);
+    $main = $main ? $main : get_term_meta($term->term_id, 'term_image', true);
+    if (!$main && $term->parent && ($parent = hl_parent_line($term))) { // muc con chua co anh -> tam dung anh dong cha
+        $main = get_term_meta($parent->term_id, 'hl_line_image', true);
+    }
     $gallery = array_filter(array_map('trim', explode("\n", (string) get_term_meta($term->term_id, 'hl_line_gallery', true))));
     return array('main' => $main, 'gallery' => array_values($gallery));
 }
 
+/** Dong san pham cha cua 1 muc con (VD: Woven -> Filler Masterbatch), null neu khong phai muc con */
+function hl_parent_line($term) {
+    if (!$term || empty($term->parent)) return null;
+    $parent = get_term($term->parent, 'product-cat');
+    return ($parent && !is_wp_error($parent) && hl_is_product_line($parent)) ? $parent : null;
+}
+
+/** Cac muc con cua 1 dong san pham, theo "Thu tu muc con" */
+function hl_get_sub_items($term) {
+    $terms = get_terms(hl_lang_args(array('taxonomy' => 'product-cat', 'hide_empty' => false, 'parent' => $term->term_id)));
+    if (is_wp_error($terms) || empty($terms)) return array();
+    usort($terms, function ($a, $b) {
+        $oa = (int) get_term_meta($a->term_id, 'hl_sub_order', true);
+        $ob = (int) get_term_meta($b->term_id, 'hl_sub_order', true);
+        return ($oa ? $oa : 999) - ($ob ? $ob : 999);
+    });
+    return $terms;
+}
+
+/** San pham lien quan (chon trong trang sua danh muc) */
+function hl_get_related_lines($term) {
+    $out = array();
+    foreach (array_filter(array_map('intval', (array) get_term_meta($term->term_id, 'hl_line_related', true))) as $id) {
+        $t = get_term($id, 'product-cat');
+        if ($t && !is_wp_error($t)) $out[] = $t;
+    }
+    return $out;
+}
 /*-----------------------------------------------------------------------------------*/
 /*  Hien thi
 /*-----------------------------------------------------------------------------------*/
@@ -556,7 +659,8 @@ function hl_render_product_line($term, $index = 0, $heading = 'h2') {
     $subtitle = get_term_meta($term->term_id, 'hl_line_subtitle', true);
     $number   = (int) get_term_meta($term->term_id, 'hl_line_order', true);
     $number   = $number ? $number : $index + 1;
-    $desc     = term_description($term->term_id, 'product-cat');
+    $subs     = hl_get_sub_items($term);
+    $on_line  = is_tax('product-cat', $term->term_id); // dang o trang cua chinh dong nay
     ?>
     <article class="hl-line" id="<?php echo esc_attr($term->slug); ?>">
         <div class="row">
@@ -581,7 +685,11 @@ function hl_render_product_line($term, $index = 0, $heading = 'h2') {
             <div class="col-lg-6">
                 <<?php echo $heading; ?> class="hl-line-title">
                     <span class="hl-line-num"><?php echo esc_html($number); ?></span>
-                    <a href="<?php echo esc_url(get_term_link($term)); ?>"><?php echo esc_html($term->name); ?></a>
+                    <?php if ($on_line) { ?>
+                        <span><?php echo esc_html($term->name); ?></span>
+                    <?php } else { ?>
+                        <a href="<?php echo esc_url(get_term_link($term)); ?>"><?php echo esc_html($term->name); ?></a>
+                    <?php } ?>
                 </<?php echo $heading; ?>>
                 <?php if ($subtitle) { ?><p class="hl-line-sub"><?php echo esc_html($subtitle); ?></p><?php } ?>
 
@@ -603,16 +711,57 @@ function hl_render_product_line($term, $index = 0, $heading = 'h2') {
                     </ul>
                 <?php } ?>
 
-                <?php if ($desc && is_tax('product-cat')) { ?>
-                    <div class="hl-line-desc"><?php echo wp_kses_post($desc); ?></div>
+                <?php if ($subs && !$on_line) { ?>
+                    <div class="hl-sub-chips">
+                        <?php foreach ($subs as $sub) { ?>
+                            <a href="<?php echo esc_url(get_term_link($sub)); ?>"><?php echo esc_html($sub->name); ?></a>
+                        <?php } ?>
+                    </div>
                 <?php } ?>
 
                 <div class="hl-line-actions">
-                    <a class="hl-btn hl-btn-primary" href="<?php echo esc_url(hl_contact_url()); ?>"><?php hl_e('btn_quote_short'); ?></a>
+                    <?php if ($on_line) { ?>
+                        <a class="hl-btn hl-btn-primary" href="<?php echo esc_url(hl_contact_url()); ?>"><?php hl_e('btn_quote_short'); ?></a>
+                    <?php } else { ?>
+                        <a class="hl-btn hl-btn-primary" href="<?php echo esc_url(get_term_link($term)); ?>"><?php hl_e('btn_view_details'); ?> <i class="fa-solid fa-arrow-right"></i></a>
+                        <a class="hl-btn hl-btn-ghost" href="<?php echo esc_url(hl_contact_url()); ?>"><?php hl_e('btn_quote_short'); ?></a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </article>
+    <?php
+}
+
+/** Bai viet cua dong san pham / muc con (o "Description" cua danh muc) + nut ASK FOR A QUOTE */
+function hl_render_article($term) {
+    $desc = term_description($term->term_id, 'product-cat');
+    if (!trim(wp_strip_all_tags($desc))) return;
+    ?>
+    <div class="hl-article">
+        <?php echo wp_kses_post($desc); ?>
+        <p class="hl-article-cta">
+            <a class="hl-btn hl-btn-quote" href="<?php echo esc_url(hl_contact_url()); ?>"><i class="fa-solid fa-envelope"></i> <?php hl_e('btn_ask_quote'); ?></a>
+        </p>
+    </div>
+    <?php
+}
+
+/** Luoi the anh + ten danh muc (muc con, san pham lien quan) */
+function hl_render_term_cards($terms, $current_id = 0) {
+    if (!$terms) return;
+    ?>
+    <div class="hl-term-cards">
+        <?php foreach ($terms as $t) {
+            $img = hl_line_images($t); ?>
+            <a class="hl-term-card<?php echo $t->term_id === $current_id ? ' is-active' : ''; ?>" href="<?php echo esc_url(get_term_link($t)); ?>">
+                <span class="hl-term-card-img">
+                    <?php if ($img['main']) { ?><img src="<?php echo esc_url($img['main']); ?>" alt="<?php echo esc_attr($t->name); ?>" loading="lazy"><?php } ?>
+                </span>
+                <strong><?php echo esc_html($t->name); ?></strong>
+            </a>
+        <?php } ?>
+    </div>
     <?php
 }
 
@@ -627,6 +776,27 @@ add_action('wp_footer', function () {
     </div>
     <?php
 }, 5);
+
+/**
+ * Lien he ban hang trong nuoc / quoc te (TALK TO US, footer).
+ * Tra ve: array(array('label', 'phone', 'tel', array(email...)), ...), bo dong khong co gi.
+ */
+function hl_sales_contacts() {
+    $rows = array(
+        array(pll__('footer_text_6'), hl_option('hl_domestic_whatsapp', '(+84) 84378680868'), hl_option('hl_domestic_email', 'info@hailinhplastic.com')),
+        array(pll__('footer_text_5'), hl_option('hl_intl_whatsapp'), hl_option('hl_intl_emails', "sales02@hailinhplastic.com\nsales03@hailinhplastic.com")),
+    );
+    $out = array();
+    foreach ($rows as $row) {
+        list($label, $phone, $emails) = $row;
+        $emails = array_values(array_filter(array_map('trim', preg_split('/[\r\n,;]+/', (string) $emails))));
+        if (!$phone && !$emails) continue;
+        // "(+84) 84378680868" -> tel:+84378680868 (bo so 84 lap lai sau ma nuoc)
+        $tel = preg_replace('/^8484/', '84', preg_replace('/\D/', '', $phone));
+        $out[] = array('label' => $label, 'phone' => $phone, 'tel' => $tel, 'emails' => $emails);
+    }
+    return $out;
+}
 
 /** Cac nut mang xa hoi */
 function hl_social_links() {
@@ -649,11 +819,28 @@ function hl_social_links() {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*  Dong san pham cu (khong co so thu tu) van dung giao dien cu (archive.php)
+/*  Danh muc cu (khong co so thu tu, khong phai muc con) van dung giao dien cu (archive.php)
 /*-----------------------------------------------------------------------------------*/
 add_filter('taxonomy_template', function ($template) {
-    if (is_tax('product-cat') && !hl_is_product_line(get_queried_object())) {
+    $term = get_queried_object();
+    if (is_tax('product-cat') && !hl_is_product_line($term) && !hl_parent_line($term)) {
         return get_template_directory() . '/archive.php';
     }
     return $template;
+});
+
+/*
+ * Link danh muc cu -> dong san pham moi (301) de giu link Google da luu.
+ * Danh sach o option "hl_term_redirects" (id cu => id moi), do cong cu nhap du lieu ghi.
+ */
+add_action('template_redirect', function () {
+    if (!is_tax('product-cat')) return;
+    $map = get_option('hl_term_redirects', array());
+    $id  = get_queried_object_id();
+    if (empty($map[$id])) return;
+    $link = get_term_link((int) $map[$id], 'product-cat');
+    if (!is_wp_error($link)) {
+        wp_safe_redirect($link, 301);
+        exit;
+    }
 });

@@ -131,30 +131,30 @@
 .hl-card-body small { font-size: 14px; color: #565672; line-height: 1.45; }
 .hl-card-body em { margin-top: auto; padding-top: 8px; font-style: normal; font-weight: 600; font-size: 14px; color: var(--hl-blue); }
 
-/* ---------- Dong san pham: khung toi (trang Products / trang dong SP) ---------- */
-.hl-lines { background: var(--hl-navy); }
-.hl-lines .hl-section-title { color: #fff; }
+/* ---------- Dong san pham: the nen trang (trang Products / trang dong SP) ---------- */
+.hl-lines { background: #fff; }
 .hl-line {
-    background: var(--hl-panel);
-    border: 1px solid var(--hl-panel-line);
+    background: #fff;
+    border: 1px solid #e3e8f2;
     border-radius: 16px;
     padding: 24px;
-    color: #fff;
+    color: var(--hl-navy);
+    box-shadow: 0 8px 28px rgba(14, 13, 53, .07);
     scroll-margin-top: 110px;
 }
 .hl-line + .hl-line { margin-top: 28px; }
 .hl-line-media { display: flex; flex-direction: column; gap: 10px; }
-.hl-line-main { display: block; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; background: #1d2250; }
+.hl-line-main { display: block; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; background: #eef2f8; }
 .hl-line-main img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.hl-line-noimg { display: flex; align-items: center; justify-content: center; color: #4b5389; font-size: 48px; }
+.hl-line-noimg { display: flex; align-items: center; justify-content: center; color: #b4bfd3; font-size: 48px; }
 .hl-line-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.hl-line-gallery a { display: block; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 10; background: #1d2250; }
+.hl-line-gallery a { display: block; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 10; background: #eef2f8; }
 .hl-line-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
 .hl-line-gallery a:hover img { transform: scale(1.04); }
 
 .hl-line-title { display: flex; align-items: center; gap: 12px; font-size: 26px; font-weight: 700; margin: 0 0 6px; }
-.hl-line-title a { color: #fff !important; }
-.hl-line-title a:hover { color: #7fdcf0 !important; }
+.hl-line-title, .hl-line-title a { color: var(--hl-navy) !important; }
+.hl-line-title a:hover { color: var(--hl-blue) !important; }
 .hl-line-num {
     flex: 0 0 auto;
     display: inline-flex;
@@ -169,12 +169,10 @@
     font-weight: 700;
 }
 .hl-card .hl-line-num { width: 28px; height: 28px; font-size: 15px; }
-.hl-line-sub { color: var(--hl-text-soft); margin: 0 0 18px; font-size: 16px; }
-.hl-line-desc { color: #dfe6f5; margin-top: 18px; font-size: 15px; line-height: 1.6; }
-.hl-line-desc p:last-child { margin-bottom: 0; }
+.hl-line-sub { color: #565672; margin: 0 0 18px; font-size: 16px; }
 
-.hl-grades { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hl-panel-line); }
-.hl-grade { padding: 12px 0; border-bottom: 1px solid var(--hl-panel-line); }
+.hl-grades { list-style: none; margin: 0; padding: 0; border-top: 1px solid #e3e8f2; }
+.hl-grade { padding: 12px 0; border-bottom: 1px solid #e3e8f2; }
 .hl-grade-head {
     display: grid;
     grid-template-columns: minmax(90px, auto) 1fr auto;
@@ -183,25 +181,25 @@
     column-gap: 12px;
     row-gap: 8px;
 }
-.hl-grade-code { grid-area: code; font-family: Consolas, Menlo, monospace; font-weight: 700; color: #7fdcf0 !important; font-size: 15px; }
+.hl-grade-code { grid-area: code; font-family: Consolas, Menlo, monospace; font-weight: 700; color: var(--hl-blue) !important; font-size: 15px; }
 .hl-grade-code:hover { text-decoration: underline !important; }
-.hl-grade-resin { grid-area: resin; text-align: center; color: #fff; font-size: 15px; }
-.hl-ratio-value { grid-area: value; font-weight: 700; color: #fff; font-size: 15px; }
-.hl-ratio-bar { grid-area: bar; position: relative; display: block; height: 8px; border-radius: 8px; background: #2a3166; }
-.hl-ratio-bar span { position: absolute; top: 0; bottom: 0; border-radius: 8px; background: linear-gradient(90deg, var(--hl-cyan), #2fa8ff); }
-.hl-grade-note { display: block; margin-top: 6px; color: #8d97b8; font-size: 12px; }
+.hl-grade-resin { grid-area: resin; text-align: center; color: var(--hl-navy); font-size: 15px; }
+.hl-ratio-value { grid-area: value; font-weight: 700; color: var(--hl-navy); font-size: 15px; }
+.hl-ratio-bar { grid-area: bar; position: relative; display: block; height: 8px; border-radius: 8px; background: #e3e8f3; }
+.hl-ratio-bar span { position: absolute; top: 0; bottom: 0; border-radius: 8px; background: linear-gradient(90deg, var(--hl-cyan), var(--hl-blue)); }
+.hl-grade-note { display: block; margin-top: 6px; color: #7a8299; font-size: 12px; }
 .hl-line-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 
-.hl-other-lines { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 32px; }
+.hl-other-lines { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 40px; }
 .hl-other-lines a {
     padding: 8px 16px;
     border-radius: 30px;
-    border: 1px solid var(--hl-panel-line);
-    color: #dfe6f5 !important;
+    border: 1px solid #d6dcea;
+    color: var(--hl-navy) !important;
     font-size: 14px;
 }
-.hl-other-lines a:hover { border-color: var(--hl-cyan); color: #fff !important; }
-.hl-page-content { margin-top: 40px; color: #dfe6f5; }
+.hl-other-lines a:hover { border-color: var(--hl-blue); color: var(--hl-blue) !important; }
+.hl-page-content { margin-top: 40px; color: var(--hl-navy); }
 
 /* ---------- Chi tiet ma hang ---------- */
 .hl-grade-detail { background: #fff; }
@@ -456,8 +454,6 @@ footer .hl-social { justify-content: flex-end; margin: 0 0 16px; }
 }
 .hl-export { background: #fff; }
 
-/* Trang Products nen toi: tieu de Other products mau sang */
-.hl-lines .hl-other-title { color: #fff; }
 
 /* Menu may tinh: re chuot xo menu con */
 @media screen and (min-width: 992px) {
@@ -465,3 +461,104 @@ footer .hl-social { justify-content: flex-end; margin: 0 0 16px; }
 }
 /* Hero sang hon: chu doc ro nho bong chu */
 .hl-hero-company, .hl-hero-title, .hl-hero-desc, .hl-stat { text-shadow: 0 2px 10px rgba(0, 0, 0, .45); }
+
+/* ---------- v2.2 (19/10/2026): nen trang, 7 dong san pham, bai viet, muc con ---------- */
+/* Hero: doan "Do you want to know more about filler masterbatch?" */
+.hl-hero-more { max-width: 700px; margin: 0 0 26px; padding-left: 16px; border-left: 3px solid var(--hl-cyan); }
+.hl-hero-question { font-size: 21px; font-weight: 600; color: #fff; margin: 0 0 6px; }
+.hl-hero-answer { font-size: 16px; line-height: 1.6; font-style: italic; color: #dfe6f5; margin: 0; }
+.hl-hero-question, .hl-hero-answer { text-shadow: 0 2px 10px rgba(0, 0, 0, .45); }
+
+/* Trang chu: 7 the, hang cuoi can giua */
+.hl-products-home { background: #fff; }
+.hl-cards { display: flex; flex-wrap: wrap; justify-content: center; }
+.hl-cards .hl-card { flex: 0 0 calc((100% - 54px) / 4); }
+.hl-card { border: 1px solid #e3e8f2; }
+
+/* Nut phu */
+.hl-btn-ghost { border-color: var(--hl-blue); color: var(--hl-blue) !important; background: #fff; }
+.hl-btn-ghost:hover { background: var(--hl-blue); color: #fff !important; }
+.hl-btn-quote {
+    background: #0b4a7d;
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: 14px 26px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(11, 74, 125, .25);
+}
+.hl-btn-quote:hover { background: var(--hl-navy); }
+
+/* Muc con (Film Bags, Woven...) dang chip trong the dong san pham */
+.hl-sub-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.hl-sub-chips a { padding: 6px 12px; border: 1px solid #d6dcea; border-radius: 6px; font-size: 14px; color: var(--hl-navy) !important; background: #f7f9fc; }
+.hl-sub-chips a:hover { border-color: var(--hl-blue); color: var(--hl-blue) !important; }
+
+/* Hang nut muc con duoi banner (giong trang Filler Masterbatch cu) */
+.hl-sub-nav { border-bottom: 1px solid #e7e7eb; background: #fff; }
+.hl-sub-nav .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 24px; padding-bottom: 24px; }
+.hl-sub-nav a {
+    padding: 8px 16px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    color: #343a40 !important;
+    font-size: 15px;
+    text-transform: uppercase;
+    background: #fff;
+    transition: background .2s, color .2s;
+}
+.hl-sub-nav a:hover, .hl-sub-nav a.is-active { background: var(--hl-navy); border-color: var(--hl-navy); color: #fff !important; }
+
+/* Bai viet san pham */
+.hl-article-wrap { margin-top: 40px; padding: 32px 36px; border: 1px solid #e3e8f2; border-radius: 16px; background: #fff; }
+.hl-article { color: #2b2d42; font-size: 16px; line-height: 1.7; }
+.hl-article h1, .hl-article h2 { font-size: 26px; font-weight: 700; color: var(--hl-navy); margin: 0 0 14px; line-height: 1.3; }
+.hl-article h3 { font-size: 20px; font-weight: 700; color: var(--hl-navy); margin: 26px 0 10px; }
+.hl-article p { margin: 0 0 12px; }
+.hl-article ul { margin: 0 0 14px; padding-left: 0; list-style: none; }
+.hl-article ul li { position: relative; padding: 4px 0 4px 26px; }
+.hl-article ul li::before { content: "\2713"; position: absolute; left: 2px; top: 4px; color: var(--hl-cyan); font-weight: 700; }
+.hl-article .hl-filler-content { display: inline-block; padding: 6px 14px; border-radius: 6px; background: #e8f1ff; color: var(--hl-blue); font-weight: 700; }
+.hl-article-cta { margin: 24px 0 8px !important; }
+
+/* Trang muc con */
+.hl-sub-img { display: block; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 28px rgba(14, 13, 53, .10); position: sticky; top: 110px; }
+.hl-sub-img img { width: 100%; height: auto; display: block; }
+.hl-sub-page .hl-article { margin-bottom: 16px; }
+
+/* Luoi the: muc con, san pham lien quan */
+.hl-block-title { margin-top: 48px; text-align: center; font-size: 26px; }
+.hl-term-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; }
+.hl-term-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e3e8f2;
+    border-radius: 12px;
+    overflow: hidden;
+    color: var(--hl-navy) !important;
+    box-shadow: 0 6px 20px rgba(14, 13, 53, .06);
+    transition: transform .2s, box-shadow .2s;
+}
+.hl-term-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(14, 13, 53, .14); }
+.hl-term-card-img { display: block; aspect-ratio: 4 / 3; background: #eef2f8; overflow: hidden; }
+.hl-term-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hl-term-card strong { padding: 12px 14px; font-size: 15px; }
+
+@media screen and (max-width: 1199px) {
+    .hl-cards .hl-card { flex-basis: calc((100% - 36px) / 3); }
+}
+@media screen and (max-width: 767px) {
+    .hl-cards .hl-card { flex-basis: calc((100% - 12px) / 2); }
+    .hl-hero-question { font-size: 18px; }
+    .hl-hero-answer { font-size: 15px; }
+    .hl-article-wrap { padding: 20px 16px; }
+    .hl-article h1, .hl-article h2 { font-size: 22px; }
+    .hl-sub-nav .container { justify-content: flex-start; gap: 8px; }
+    .hl-sub-nav a { font-size: 13px; padding: 6px 10px; }
+    .hl-sub-img { position: static; }
+}
+@media screen and (max-width: 480px) {
+    .hl-cards .hl-card { flex-basis: 100%; }
+    .hl-term-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+}

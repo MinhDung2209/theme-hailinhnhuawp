@@ -12,23 +12,21 @@
                      <div class="mb-0"><?php pll_e('sec_talk_to_us_text_2'); ?></div>
                   </div>
                   
+                  <?php /* Hai Linh v2: so dien thoai / email sua trong Theme Options > "Hai Linh - Trang chu & lien he" > TALK TO US */
+                  foreach (hl_sales_contacts() as $hl_row) { ?>
                   <div class="d-flex align-items-top address mb-32px">
                      <i class="fa-regular fa-envelope mr-3 mb-0"></i>
                      <div>
-                        <label class="mb-0"><?php pll_e('footer_text_6'); ?></label>
-                        <p class="mb-0">WhatsApps: <a class="text-dark" href="tel:+84378680868">(+84) 84378680868</a></p>
-                        <p class="mb-0">Email: <a class="text-dark" href="mailto:info@hailinhplastic.com">info@hailinhplastic.com</a></p>
+                        <label class="mb-0"><?php echo esc_html($hl_row['label']); ?></label>
+                        <?php if ($hl_row['phone']) { ?>
+                           <p class="mb-0">WhatsApps: <a class="text-dark" href="tel:+<?php echo esc_attr($hl_row['tel']); ?>"><?php echo esc_html($hl_row['phone']); ?></a></p>
+                        <?php } ?>
+                        <?php foreach ($hl_row['emails'] as $hl_i => $hl_email) { ?>
+                           <p class="mb-0<?php echo $hl_i ? ' hl-email-more' : ''; ?>"><?php echo $hl_i ? '' : 'Email: '; ?><a class="text-dark" href="mailto:<?php echo esc_attr($hl_email); ?>"><?php echo esc_html($hl_email); ?></a></p>
+                        <?php } ?>
                      </div>
                   </div>
-                  
-                  <div class="d-flex align-items-top address mb-32px">
-                     <i class="fa-regular fa-envelope mr-3 mb-0"></i>
-                     <div>
-                        <label class="mb-0"><?php pll_e('footer_text_5'); ?></label>
-                        <p class="mb-0">WhatsApps: <a class="text-dark" href="tel:+84358918210">(+84) 358918210</a></p>
-                        <p class="mb-0">Email: <a class="text-dark" href="mailto:Annathu.do707@gmail.com">Annathu.do707@gmail.com</a></p>
-                     </div>
-                  </div>
+                  <?php } ?>
                </div>
                <div class="col-lg-6">
                    <?php

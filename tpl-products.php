@@ -17,19 +17,7 @@ $lines = hl_get_product_lines();
             <p class="text-center"><?php pll_e('text_common_2'); ?></p>
         <?php }
 
-        // Cac danh muc cu (Color, Transparent...) - giu link cu
-        $others = hl_get_other_lines();
-        if ($others) { ?>
-            <h3 class="hl-sub-title hl-other-title"><?php hl_e('other_products'); ?></h3>
-            <div class="hl-other-grid">
-                <?php foreach ($others as $term) { ?>
-                    <a class="hl-other" href="<?php echo esc_url(get_term_link($term)); ?>">
-                        <img src="<?php echo esc_url(get_term_meta($term->term_id, 'term_image', true)); ?>" alt="<?php echo esc_attr($term->name); ?>" loading="lazy">
-                        <span><?php echo esc_html($term->name); ?></span>
-                    </a>
-                <?php } ?>
-            </div>
-        <?php }
+        // Danh muc cu (Filler/Transparent/White cu...) khong hien nua: link cu tu chuyen sang dong moi (hl_term_redirects)
 
         // Noi dung soan them trong trang (neu co)
         while (have_posts()) {
