@@ -7,7 +7,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('HL_NOI_DUNG_VER', '2026-10-20');
+define('HL_NOI_DUNG_VER', '2026-10-20b');
 define('HLN_DIR', get_template_directory() . '/noi-dung');
 
 /* ------------------------------------------------------------------ */
@@ -202,6 +202,20 @@ function hln_run() {
     remove_filter('pre_term_description', 'wp_filter_kses');
     add_filter('pre_term_description', 'wp_filter_post_kses'); // van loc an toan nhu noi dung bai viet
     $ids = array('en' => array(), 'vi' => array());
+
+    /* 0. COLOR: tren web that danh muc goc color-masterbatch bi gan nham tieng Viet -> gan lai EN / VI cho dung slug */
+    $c_en = get_term_by('slug', 'color-masterbatch', 'product-cat');
+    $c_vi = get_term_by('slug', 'color-masterbatch-vn', 'product-cat');
+    if ($c_en && $c_vi) {
+        foreach (array('en' => $c_en, 'vi' => $c_vi) as $lang => $t) {
+            foreach (get_terms(array('taxonomy' => 'product-cat', 'hide_empty' => false, 'lang' => '', 'meta_key' => '_hl_key', 'meta_value' => 'color:' . $lang, 'fields' => 'ids')) as $other) {
+                if ((int) $other !== (int) $t->term_id) delete_term_meta($other, '_hl_key');
+            }
+            pll_set_term_language($t->term_id, $lang);
+            update_term_meta($t->term_id, '_hl_key', 'color:' . $lang);
+        }
+        pll_save_term_translations(array('en' => $c_en->term_id, 'vi' => $c_vi->term_id));
+    }
 
     /* 1. 7 dong san pham */
     foreach (hln_lines() as $key => $l) {
