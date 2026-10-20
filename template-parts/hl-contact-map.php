@@ -5,8 +5,6 @@ if (!$address && function_exists('pll__')) {
     $address = pll__('footer_text_1');
     $address = $address === 'footer_text_1' ? '' : $address;
 }
-$email = hl_option('hl_email', 'info@hailinhplastic.com');
-$phone = hl_option('hl_phone', '+84 358 918 210');
 $map   = hl_option('hl_map_embed');
 $profile_file = hl_option('hl_profile_file');
 
@@ -34,15 +32,16 @@ if ($map && preg_match('~src=["\']([^"\']+)["\']~', $map, $m)) {
                 </div>
             </div>
             <div class="col-lg-5">
+                <h3 class="hl-company-name"><?php hl_e('company_name'); ?></h3>
                 <ul class="hl-contact-list">
                     <?php if ($address) { ?>
                         <li><i class="fa-solid fa-location-dot"></i><div><b><?php hl_e('contact_address'); ?></b><?php echo nl2br(esc_html(trim(wp_strip_all_tags($address)))); ?></div></li>
                     <?php } ?>
-                    <?php if ($email) { ?>
-                        <li><i class="fa-regular fa-envelope"></i><div><b><?php hl_e('contact_email'); ?></b><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a></div></li>
-                    <?php } ?>
-                    <?php if ($phone) { ?>
-                        <li><i class="fa-solid fa-phone"></i><div><b><?php hl_e('contact_phone'); ?></b><a href="tel:<?php echo esc_attr(preg_replace('/[^\d+]/', '', $phone)); ?>"><?php echo esc_html($phone); ?></a></div></li>
+                    <?php foreach (hl_sales_contacts() as $row) { ?>
+                        <li><i class="fa-regular fa-envelope"></i><div><b><?php echo esc_html($row['label']); ?></b>
+                            <?php if ($row['phone']) { ?>WhatsApps: <a href="https://wa.me/<?php echo esc_attr($row['tel']); ?>" target="_blank" rel="noopener"><?php echo esc_html($row['phone']); ?></a><br><?php } ?>
+                            <?php foreach ($row['emails'] as $i => $mail) { ?><?php echo $i ? '<span class="hl-mail-indent"></span>' : 'Email: '; ?><a href="mailto:<?php echo esc_attr($mail); ?>"><?php echo esc_html($mail); ?></a><br><?php } ?>
+                        </div></li>
                     <?php } ?>
                 </ul>
                 <div class="hl-contact-actions">

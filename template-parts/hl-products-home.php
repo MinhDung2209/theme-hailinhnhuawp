@@ -24,7 +24,7 @@ if (!$lines) return;
                         <span class="hl-line-num"><?php echo esc_html($number ? $number : $i + 1); ?></span>
                         <strong><?php echo esc_html($term->name); ?></strong>
                         <?php if ($subtitle) { ?><small><?php echo esc_html($subtitle); ?></small><?php } ?>
-                        <em><?php hl_e(hl_get_grades($term->term_id) ? 'btn_view_grades' : 'btn_view_details'); ?> <i class="fa-solid fa-arrow-right"></i></em>
+                        <em><?php hl_e('btn_view_details'); ?> <i class="fa-solid fa-arrow-right"></i></em>
                     </span>
                 </a>
             <?php } ?>

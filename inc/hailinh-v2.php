@@ -65,6 +65,9 @@ function hl_strings() {
         'contact_address'   => 'Address',
         'contact_email'     => 'Email',
         'contact_phone'     => 'Tel / WhatsApp / Zalo',
+        'company_name'      => 'HAI LINH PLASTIC CO.,LTD',
+        'sales_domestic'    => 'Contact for domestic sales:',
+        'sales_intl'        => 'Contact for international sales:',
     );
 }
 
@@ -667,7 +670,6 @@ function hl_render_ratio_bar($min, $max) {
 /** 1 the dong san pham (dung o trang Products va trang dong san pham) */
 function hl_render_product_line($term, $index = 0, $heading = 'h2') {
     $images   = hl_line_images($term);
-    $grades   = hl_get_grades($term->term_id);
     $subtitle = get_term_meta($term->term_id, 'hl_line_subtitle', true);
     $number   = (int) get_term_meta($term->term_id, 'hl_line_order', true);
     $number   = $number ? $number : $index + 1;
@@ -705,23 +707,7 @@ function hl_render_product_line($term, $index = 0, $heading = 'h2') {
                 </<?php echo $heading; ?>>
                 <?php if ($subtitle) { ?><p class="hl-line-sub"><?php echo esc_html($subtitle); ?></p><?php } ?>
 
-                <?php if ($grades) { ?>
-                    <ul class="hl-grades">
-                        <?php foreach ($grades as $grade) {
-                            $g = hl_grade_data($grade); ?>
-                            <li class="hl-grade">
-                                <div class="hl-grade-head">
-                                    <a class="hl-grade-code" href="<?php echo esc_url($g['url']); ?>"><?php echo esc_html($g['code']); ?></a>
-                                    <span class="hl-grade-resin"><?php echo esc_html($g['resin']); ?></span>
-                                    <?php hl_render_ratio_bar($g['min'], $g['max']); ?>
-                                </div>
-                                <?php if ($g['min'] !== null || $g['max'] !== null) { ?>
-                                    <small class="hl-grade-note"><?php hl_e('filler_ratio'); ?></small>
-                                <?php } ?>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                <?php } ?>
+                <?php /* Ma hang + thanh ty le filler: nha may khong muon cong khai (note Check web 20/10) -> ty le filler da co trong bai viet */ ?>
 
                 <?php if ($subs && !$on_line) { ?>
                     <div class="hl-sub-chips">
@@ -795,8 +781,8 @@ add_action('wp_footer', function () {
  */
 function hl_sales_contacts() {
     $rows = array(
-        array(pll__('footer_text_6'), hl_option('hl_domestic_whatsapp', '(+84) 84378680868'), hl_option('hl_domestic_email', 'info@hailinhplastic.com')),
-        array(pll__('footer_text_5'), hl_option('hl_intl_whatsapp'), hl_option('hl_intl_emails', "sales02@hailinhplastic.com\nsales03@hailinhplastic.com")),
+        array(hl_t('sales_domestic'), hl_option('hl_domestic_whatsapp', '(+84) 84378680868'), hl_option('hl_domestic_email', 'info@hailinhplastic.com')),
+        array(hl_t('sales_intl'), hl_option('hl_intl_whatsapp'), hl_option('hl_intl_emails', "sales02@hailinhplastic.com\nsales03@hailinhplastic.com")),
     );
     $out = array();
     foreach ($rows as $row) {
@@ -846,6 +832,14 @@ add_filter('taxonomy_template', function ($template) {
  * Danh sach o option "hl_term_redirects" (id cu => id moi), do cong cu nhap du lieu ghi.
  */
 add_action('template_redirect', function () {
+    // Trang ma hang (product co hl_grade_code) khong con cong khai -> ve trang dong san pham
+    if (is_singular('product') && get_post_meta(get_queried_object_id(), 'hl_grade_code', true)) {
+        $terms = get_the_terms(get_queried_object_id(), 'product-cat');
+        if ($terms && !is_wp_error($terms)) {
+            wp_safe_redirect(get_term_link($terms[0]), 301);
+            exit;
+        }
+    }
     if (!is_tax('product-cat')) return;
     $map = get_option('hl_term_redirects', array());
     $id  = get_queried_object_id();

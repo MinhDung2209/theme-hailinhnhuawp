@@ -562,3 +562,10 @@ footer .hl-social { justify-content: flex-end; margin: 0 0 16px; }
     .hl-cards .hl-card { flex-basis: 100%; }
     .hl-term-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 }
+
+/* v2.3 (note Check web 20/10) */
+.hl-company-name { color: var(--hl-blue); font-weight: 800; font-size: 28px; line-height: 1.2; margin: 0 0 20px; }
+.hl-mail-indent { display: inline-block; width: 3.3em; }
+.hl-line-gallery a:only-child { grid-column: 1 / -1; aspect-ratio: auto; background: #fff; }
+.hl-line-gallery a:only-child img { height: auto; max-height: 520px; object-fit: contain; }
+@media (max-width: 575px) { .hl-company-name { font-size: 22px; } }

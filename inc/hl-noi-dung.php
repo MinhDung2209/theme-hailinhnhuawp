@@ -7,7 +7,7 @@
 
 if (!defined('ABSPATH')) exit;
 
-define('HL_NOI_DUNG_VER', '2026-10-20b');
+define('HL_NOI_DUNG_VER', '2026-10-20c');
 define('HLN_DIR', get_template_directory() . '/noi-dung');
 
 /* ------------------------------------------------------------------ */
@@ -49,8 +49,8 @@ function hln_subs() {
         'lamination' => array('Lamination', 'Lamination', 'lamination', 'trang-phu', 'sub-lamination'),
         'non-woven'  => array('Non-woven', 'Non-woven', 'non-woven', 'vai-khong-det', 'sub-non-woven'),
         'woven'      => array('Woven', 'Woven', 'woven', 'bao-det', 'sub-woven'),
-        'tarpaulin'  => array('Tarpaulin', 'Tarpaulin', 'tarpaulin', 'bat-tarpaulin', ''),
-        'hdpe-pipe'  => array('HDPE Pipe', 'HDPE Pipe', 'hdpe-pipe', 'ong-hdpe', ''),
+        'tarpaulin'  => array('Tarpaulin', 'Tarpaulin', 'tarpaulin', 'bat-tarpaulin', 'sub-tarpaulin'),
+        'hdpe-pipe'  => array('HDPE Pipe', 'HDPE Pipe', 'hdpe-pipe', 'ong-hdpe', 'sub-hdpe-pipe'),
     );
 }
 
@@ -110,6 +110,8 @@ function hln_vi_strings() {
         'Contact & Location' => 'Liên hệ & Bản đồ',
         'Address' => 'Địa chỉ',
         'Tel / WhatsApp / Zalo' => 'Điện thoại / WhatsApp / Zalo',
+        'Contact for domestic sales:' => 'Liên hệ kinh doanh trong nước:',
+        'Contact for international sales:' => 'Liên hệ kinh doanh quốc tế:',
     );
 }
 
@@ -126,7 +128,7 @@ function hln_log($msg) {
 function hln_image($key) {
     if (!$key) return '';
     if (!file_exists(HLN_DIR . '/anh/' . $key . '.webp')) { hln_log("! Thieu anh $key"); return ''; }
-    return get_template_directory_uri() . '/noi-dung/anh/' . $key . '.webp';
+    return get_template_directory_uri() . '/noi-dung/anh/' . $key . '.webp?v=' . HL_NOI_DUNG_VER; // doi anh -> doi version de trinh duyet tai lai
 }
 
 function hln_term_by_key($key, $lang) {
