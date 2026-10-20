@@ -64,9 +64,10 @@
     require get_template_directory() . '/function-polylang.php';
 
 /* ----------------------------------------------------------------------------------- */
-/*  Hai Linh v2: 5 dong san pham moi, hero, chung chi, library, map (10/2026)
+/*  Hai Linh v2: 7 dong san pham moi, hero, chung chi, library, map (10/2026)
 /*----------------------------------------------------------------------------------- */
     require get_template_directory() . '/inc/hailinh-v2.php';
+    require get_template_directory() . '/inc/hl-noi-dung.php'; // noi dung 7 dong san pham, tu nap khi kich hoat theme
 
 /* ----------------------------------------------------------------------------------- */
 /*  Create metadata

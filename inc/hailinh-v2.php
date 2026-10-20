@@ -315,7 +315,7 @@ function hl_text_lines($option) {
 
 /** Cac danh muc cu (khong thuoc 5 dong moi, khong phai danh muc con) co anh -> muc "Other products" */
 function hl_get_other_lines() {
-    $terms = get_terms(hl_lang_args(array('taxonomy' => 'product-cat', 'hide_empty' => false, 'parent' => 0)));
+    $terms = hl_get_terms_lang(array('taxonomy' => 'product-cat', 'hide_empty' => false, 'parent' => 0));
     if (is_wp_error($terms)) return array();
     return array_values(array_filter($terms, function ($term) {
         return !hl_is_product_line($term) && get_term_meta($term->term_id, 'term_image', true) && get_term_children($term->term_id, 'product-cat') === array();
@@ -525,8 +525,20 @@ function hl_lang_args($args) {
     return $args;
 }
 
+/** get_terms + loc lai theo ngon ngu dang xem (tham so "lang" cua Polylang khong phai luc nao cung chay -> tranh hien lan dong EN/VI) */
+function hl_get_terms_lang($args) {
+    $terms = get_terms(hl_lang_args($args));
+    if (is_wp_error($terms) || !function_exists('pll_current_language') || !function_exists('pll_get_term_language')) return $terms;
+    $lang = pll_current_language();
+    if (!$lang) return $terms;
+    return array_values(array_filter($terms, function ($t) use ($lang) {
+        $l = pll_get_term_language(is_object($t) ? $t->term_id : (int) $t);
+        return !$l || $l === $lang;
+    }));
+}
+
 function hl_get_product_lines() {
-    $terms = get_terms(hl_lang_args(array(
+    $terms = hl_get_terms_lang(array(
         'taxonomy'   => 'product-cat',
         'hide_empty' => false,
         'meta_query' => array(array(
@@ -535,7 +547,7 @@ function hl_get_product_lines() {
             'compare' => '>',
             'type'    => 'NUMERIC',
         )),
-    )));
+    ));
     if (is_wp_error($terms) || empty($terms)) return array();
 
     usort($terms, function ($a, $b) {
@@ -615,7 +627,7 @@ function hl_parent_line($term) {
 
 /** Cac muc con cua 1 dong san pham, theo "Thu tu muc con" */
 function hl_get_sub_items($term) {
-    $terms = get_terms(hl_lang_args(array('taxonomy' => 'product-cat', 'hide_empty' => false, 'parent' => $term->term_id)));
+    $terms = hl_get_terms_lang(array('taxonomy' => 'product-cat', 'hide_empty' => false, 'parent' => $term->term_id));
     if (is_wp_error($terms) || empty($terms)) return array();
     usort($terms, function ($a, $b) {
         $oa = (int) get_term_meta($a->term_id, 'hl_sub_order', true);

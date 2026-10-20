@@ -132,7 +132,9 @@
 		function ew_htaccess_writable() {
 		    if (!is_writable(get_home_path() . '.htaccess')) {
 		        if (current_user_can('administrator')) {
-		            add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please make sure your <a href="%s">.htaccess</a> file is writable ', 'ew'), admin_url('options-permalink.php')) . "</p></div>';"));
+		            add_action('admin_notices', function () { // PHP 8: create_function da bi bo
+		                echo '<div class="error"><p>' . sprintf(__('Please make sure your <a href="%s">.htaccess</a> file is writable ', 'ew'), admin_url('options-permalink.php')) . '</p></div>';
+		            });
 		        }
 		    }
 		}
